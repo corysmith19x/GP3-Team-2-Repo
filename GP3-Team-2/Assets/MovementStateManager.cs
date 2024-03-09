@@ -89,7 +89,7 @@ public class MovementStateManager : MonoBehaviour
         
         if (Input.GetKey(KeyCode.LeftShift) && canSprint)
         {
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift) && isMoving)
             {   
                 if (regeneratingStamina != null)
                 {
