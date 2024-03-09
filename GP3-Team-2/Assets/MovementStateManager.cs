@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MovementStateManager : MonoBehaviour
 {
-    public float moveSpeed = 3;
+    [SerializeField] private float moveSpeed;
+    private float walkTopSpeed = 5;
+    private float sprintTopSpeed = 9;
     [HideInInspector] public Vector3 dir; //direction
     float xInput, yInput;
     CharacterController controller;
@@ -16,10 +18,23 @@ public class MovementStateManager : MonoBehaviour
     [SerializeField] float gravity = -9.81f;
     Vector3 velocity;
 
+    [Header("Stamina Parameters")]
+    public float playerStamina; 
+    public float maxStamina = 100f; 
+    public float staminaDrain;
+    bool canSprint;
+    bool isMoving;
+    private float timeBeforeRegen  = 3;
+    private float staminaIncrement = 2;
+    private float staminaTimeIncrement = 0.1f;
+    private Coroutine regeneratingStamina;
+
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        playerStamina = maxStamina;
     }
 
     // Update is called once per frame
@@ -27,6 +42,7 @@ public class MovementStateManager : MonoBehaviour
     {
         GetDirectionAndMove();
         Gravity();
+        Sprint();
     }
 
     void GetDirectionAndMove()
@@ -52,6 +68,78 @@ public class MovementStateManager : MonoBehaviour
         else if (velocity.y < 0) velocity.y = -2;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    private void Sprint()
+    {   
+        // Check if the player is moving
+        if (xInput != 0 || yInput != 0)
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
+
+
+        if(playerStamina > 0)
+            canSprint = true;
+        
+        
+        if (Input.GetKey(KeyCode.LeftShift) && canSprint)
+        {
+            if (Input.GetKey(KeyCode.LeftShift))
+            {   
+                if (regeneratingStamina != null)
+                {
+                    StopCoroutine(regeneratingStamina);
+                    regeneratingStamina = null;
+                }
+
+                moveSpeed = sprintTopSpeed;
+
+                if (isMoving)
+                {
+                    playerStamina -= staminaDrain * Time.deltaTime; 
+                }
+            }    
+
+            if (playerStamina < 0)
+                playerStamina = 0;
+        }
+        else { moveSpeed = walkTopSpeed; }
+        
+
+        if (playerStamina == 0)
+            canSprint = false; 
+
+        if (!Input.GetKey(KeyCode.LeftShift) && playerStamina < maxStamina && regeneratingStamina == null)
+        {
+            regeneratingStamina = StartCoroutine(RegenStamina());
+        }
+    }
+
+    private IEnumerator RegenStamina()
+    {
+        yield return new WaitForSeconds(timeBeforeRegen);
+        WaitForSeconds timeToWait = new WaitForSeconds(staminaTimeIncrement);
+
+
+        while(playerStamina < maxStamina)
+        {
+            if (playerStamina > 0)
+                canSprint = true;
+
+            playerStamina += staminaIncrement;
+
+            if (playerStamina > maxStamina)
+                playerStamina = maxStamina;
+
+            yield return timeToWait;
+        }
+
+        regeneratingStamina = null;
     }
 
     //private void OnDrawGizmos()  --- Gizmo Drawing Debug

@@ -391,6 +391,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   gravity: -9.81
+  playerStamina: 0
+  maxStamina: 100
+  staminaDrain: 25
 --- !u!143 &1569728743
 CharacterController:
   m_ObjectHideFlags: 0
