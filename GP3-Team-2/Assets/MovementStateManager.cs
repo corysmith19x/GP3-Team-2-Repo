@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MovementStateManager : MonoBehaviour
 {
+    [Header("Movement Parameters")]
     [SerializeField] private float moveSpeed;
     private float walkTopSpeed = 5;
     private float sprintTopSpeed = 9;
@@ -11,14 +12,19 @@ public class MovementStateManager : MonoBehaviour
     float xInput, yInput;
     CharacterController controller;
 
+    [Header("Jump Parameters")]
+    public float jumpHeight = 3f;
+
     [SerializeField] float groundYOffset;
     [SerializeField] LayerMask groundMask;
-    Vector3 spherePos;
+    public Transform groundCheck;
+    public float groundDistance = 0.4f;
+    //Vector3 spherePos;
 
     [SerializeField] float gravity = -9.81f;
     Vector3 velocity;
 
-    [Header("Stamina Parameters")]
+    [Header("Stamina/Sprint Parameters")]
     public float playerStamina; 
     public float maxStamina = 100f; 
     public float staminaDrain;
@@ -43,6 +49,7 @@ public class MovementStateManager : MonoBehaviour
         GetDirectionAndMove();
         Gravity();
         Sprint();
+        Jump();
     }
 
     void GetDirectionAndMove()
@@ -57,9 +64,19 @@ public class MovementStateManager : MonoBehaviour
 
     bool IsGrounded()
     {
-        spherePos = new Vector3(transform.position.x, transform.position.y + groundYOffset, transform.position.z);
+        /*spherePos = new Vector3(transform.position.x, transform.position.y + groundYOffset, transform.position.z);
         if (Physics.CheckSphere(spherePos, controller.radius - 0.05f, groundMask)) return true;
-        return false;
+        return false;*/
+        if (Physics.CheckSphere(groundCheck.position, groundDistance, groundMask))
+        {
+            Debug.Log("Is grounded");
+            return true;
+        }
+        else
+        {
+            Debug.Log("Not Grounded.");
+            return false;
+        }
     }
 
     void Gravity()
@@ -68,6 +85,15 @@ public class MovementStateManager : MonoBehaviour
         else if (velocity.y < 0) velocity.y = -2;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    private void Jump()
+    {
+        if(Input.GetKeyDown(KeyCode.Space) && IsGrounded() && playerStamina > 10)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            playerStamina -= 10;
+        }
     }
 
     private void Sprint()
