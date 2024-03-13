@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class MovementStateManager : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class MovementStateManager : MonoBehaviour
 
     float xInput, yInput;
     CharacterController controller;
+    private PlayerInput playerInput;
+    private PlayerControls playerInputActions;
 
     [Header("Jump Parameters")]
     public float jumpHeight = 3f;
@@ -35,22 +39,41 @@ public class MovementStateManager : MonoBehaviour
     private float staminaIncrement = 2;
     private float staminaTimeIncrement = 0.1f;
     private Coroutine regeneratingStamina;
+    public bool sprintHeld;
+
+    private void Awake()
+    {
+        playerInput = GetComponent<PlayerInput>();
+
+        playerInputActions = new PlayerControls();
+        playerInputActions.Player.Enable();
+        playerInputActions.Player.Jump.performed += Jump;
+        //playerInputActions.Player.Movement.performed += GetDirectionAndMove;
+    }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         controller = GetComponent<CharacterController>();
         playerStamina = maxStamina;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        GetDirectionAndMove();
+        /*dir = playerInputActions.Player.Movement.ReadValue<Vector3>();
+        controller.Move(dir * moveSpeed * Time.deltaTime);*/
+        Controls();
         Gravity();
+        GetDirectionAndMove();
         Sprint();
-        Jump();
     }
+
+    /*public void GetDirectionAndMove(InputAction.CallbackContext context)
+    {
+        dir = context.ReadValue<Vector3>();
+        controller.Move(dir * moveSpeed * Time.deltaTime);
+    }*/ 
 
     void GetDirectionAndMove()
     {
@@ -86,16 +109,21 @@ public class MovementStateManager : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
-    private void Jump()
+    public void Jump(InputAction.CallbackContext context)
     {
-        if(Input.GetKeyDown(KeyCode.Space) && IsGrounded() && playerStamina > 10)
+        if (context.performed && IsGrounded() && playerStamina > 10)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
             playerStamina -= 10;
         }
     }
 
-    private void Sprint()
+    void Controls()
+    {
+        sprintHeld = playerInputActions.Player.Sprint.IsPressed();
+    }
+
+    public void Sprint()
     {   
         // Check if the player is moving
         if (xInput != 0 || yInput != 0)
@@ -112,9 +140,9 @@ public class MovementStateManager : MonoBehaviour
             canSprint = true;
         
         
-        if (Input.GetKey(KeyCode.LeftShift) && canSprint)
+        if (sprintHeld && canSprint)
         {
-            if (Input.GetKey(KeyCode.LeftShift) && isMoving)
+            if (sprintHeld && isMoving)
             {   
                 if (regeneratingStamina != null)
                 {
@@ -124,10 +152,9 @@ public class MovementStateManager : MonoBehaviour
 
                 moveSpeed = sprintTopSpeed;
 
-                if (isMoving)
-                {
-                    playerStamina -= staminaDrain * Time.deltaTime; 
-                }
+                
+                playerStamina -= staminaDrain * Time.deltaTime; 
+
             }    
 
             if (playerStamina < 0)
@@ -139,7 +166,7 @@ public class MovementStateManager : MonoBehaviour
         if (playerStamina == 0)
             canSprint = false; 
 
-        if (!Input.GetKey(KeyCode.LeftShift) && playerStamina < maxStamina && regeneratingStamina == null)
+        if (!sprintHeld && playerStamina < maxStamina && regeneratingStamina == null)
         {
             regeneratingStamina = StartCoroutine(RegenStamina());
         }
