@@ -11,8 +11,23 @@ public class PlayerManager : MonoBehaviour
     public Transform groundCheck;
     //Set up reference to groundcheck transform.
 
-    public float speed = 6f;
+    [SerializeField] private float moveSpeed;
+    private float walkTopSpeed = 5;
+    private float sprintTopSpeed = 9;
     //Speed of movement.
+
+    [Header("Stamina/Sprint Parameters")]
+    public float playerStamina; 
+    public float maxStamina = 100f; 
+    public float staminaDrain;
+    bool canSprint;
+    bool isMoving;
+    private float timeBeforeRegen  = 3;
+    private float staminaIncrement = 2;
+    private float staminaTimeIncrement = 0.1f;
+    private Coroutine regeneratingStamina;
+    float horizontal, vertical;
+
     public float gravity = -9.81f;
     Vector3 velocity;
     //Sets up gravity.
@@ -34,6 +49,11 @@ public class PlayerManager : MonoBehaviour
     public bool hasDoubleJump;
     //Bool Determining if you can Double Jump.
 
+    void Start()
+    {
+        playerStamina = maxStamina;
+    }
+
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -46,8 +66,8 @@ public class PlayerManager : MonoBehaviour
         }
         //Properly resets velocity.
 
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
         //Gets input from horizontal/vertical axes.
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
         //Saves movement direction from input, normalizes to account for diagonals.
@@ -63,7 +83,7 @@ public class PlayerManager : MonoBehaviour
 
             Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             //Ensures the player moves in the correct direction with the camera.
-            controller.Move(moveDirection.normalized * speed * Time.deltaTime);
+            controller.Move(moveDirection.normalized * moveSpeed * Time.deltaTime);
             //Applies movement to the character controller, based on direction and speed, framerate independent.
 
         }
@@ -83,6 +103,77 @@ public class PlayerManager : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
         //Applies vertical movement based on velocity.
 
+        Sprint();
+    }
 
+    public void Sprint()
+    {   
+        // Check if the player is moving
+        if (horizontal != 0 || vertical != 0)
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
+
+
+        if(playerStamina > 0)
+            canSprint = true;
+        
+        
+        if (Input.GetKey(KeyCode.LeftShift) && canSprint)
+        {
+            if (Input.GetKey(KeyCode.LeftShift) && isMoving)
+            {   
+                if (regeneratingStamina != null)
+                {
+                    StopCoroutine(regeneratingStamina);
+                    regeneratingStamina = null;
+                }
+
+                moveSpeed = sprintTopSpeed;
+
+                
+                playerStamina -= staminaDrain * Time.deltaTime; 
+
+            }    
+
+            if (playerStamina < 0)
+                playerStamina = 0;
+        }
+        else { moveSpeed = walkTopSpeed; }
+        
+
+        if (playerStamina == 0)
+            canSprint = false; 
+
+        if (!Input.GetKey(KeyCode.LeftShift) && playerStamina < maxStamina && regeneratingStamina == null)
+        {
+            regeneratingStamina = StartCoroutine(RegenStamina());
+        }
+    }
+
+    private IEnumerator RegenStamina()
+    {
+        yield return new WaitForSeconds(timeBeforeRegen);
+        WaitForSeconds timeToWait = new WaitForSeconds(staminaTimeIncrement);
+
+
+        while(playerStamina < maxStamina)
+        {
+            if (playerStamina > 0)
+                canSprint = true;
+
+            playerStamina += staminaIncrement;
+
+            if (playerStamina > maxStamina)
+                playerStamina = maxStamina;
+
+            yield return timeToWait;
+        }
+
+        regeneratingStamina = null;
     }
 }
