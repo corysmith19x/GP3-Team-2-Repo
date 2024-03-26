@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.EventSystems;
 
 public class MovementStateManager : MonoBehaviour
 {
@@ -39,7 +38,16 @@ public class MovementStateManager : MonoBehaviour
     private float staminaIncrement = 2;
     private float staminaTimeIncrement = 0.1f;
     private Coroutine regeneratingStamina;
+
+    [Header("Capture Parameters")]
+    /*[SerializeField] GameObject net; 
+    [SerializeField] Transform throwPos; 
+    public float netVelocity; */
+
+    [Header("Controls")]
     public bool sprintHeld;
+    public bool capturePressed;
+    public bool jumpPressed; 
 
     private void Awake()
     {
@@ -51,6 +59,7 @@ public class MovementStateManager : MonoBehaviour
         //playerInputActions.Player.Movement.performed += GetDirectionAndMove;
     }
 
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -61,19 +70,12 @@ public class MovementStateManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        /*dir = playerInputActions.Player.Movement.ReadValue<Vector3>();
-        controller.Move(dir * moveSpeed * Time.deltaTime);*/
         Controls();
         Gravity();
         GetDirectionAndMove();
         Sprint();
+        //ThrowNet();
     }
-
-    /*public void GetDirectionAndMove(InputAction.CallbackContext context)
-    {
-        dir = context.ReadValue<Vector3>();
-        controller.Move(dir * moveSpeed * Time.deltaTime);
-    }*/ 
 
     void GetDirectionAndMove()
     {
@@ -121,6 +123,8 @@ public class MovementStateManager : MonoBehaviour
     void Controls()
     {
         sprintHeld = playerInputActions.Player.Sprint.IsPressed();
+        capturePressed = playerInputActions.Player.Net.IsPressed();
+        jumpPressed = playerInputActions.Player.Jump.IsPressed();
     }
 
     public void Sprint()
@@ -170,6 +174,16 @@ public class MovementStateManager : MonoBehaviour
         {
             regeneratingStamina = StartCoroutine(RegenStamina());
         }
+    }
+
+    public void ThrowNet()
+    {
+        /*if(capturePressed)
+        {
+            GameObject currentNet = Instantiate(net, throwPos.position, throwPos.rotation);
+            Rigidbody rb = currentNet.GetComponent<Rigidbody>();
+            rb.AddForce(throwPos.forward * netVelocity);
+        }*/
     }
 
     private IEnumerator RegenStamina()
