@@ -648,6 +648,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1915955303}
+    - target: {fileID: 5244928629110226283, guid: eefeaf21106200e48893eca0a114153d, type: 3}
+      propertyPath: hasDoubleJump
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6575212222244773407, guid: eefeaf21106200e48893eca0a114153d, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0.000000012804364

@@ -23,10 +23,16 @@ public class PlayerManager : MonoBehaviour
     public LayerMask groundMask;
     //Layer for ground.
     bool isGrounded;
+    //True/False for if player is grounded.
+    int doubleJump = 1;
+    //Double Jump Variable.
 
     public float turnSmoothTime = 0.1f;
     //Time the rotation of the player should take.
     float turnSmoothVelocity;
+
+    public bool hasDoubleJump;
+    //Bool Determining if you can Double Jump.
 
     void Update()
     {
@@ -36,6 +42,7 @@ public class PlayerManager : MonoBehaviour
         if(isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
+            doubleJump = 1;
         }
         //Properly resets velocity.
 
@@ -64,6 +71,11 @@ public class PlayerManager : MonoBehaviour
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+        if(hasDoubleJump && Input.GetButtonDown("Jump") && !isGrounded && doubleJump > 0)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            doubleJump -= 1;
         }
 
         velocity.y += gravity * Time.deltaTime;
