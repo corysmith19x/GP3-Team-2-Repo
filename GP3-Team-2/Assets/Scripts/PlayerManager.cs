@@ -34,6 +34,19 @@ public class PlayerManager : MonoBehaviour
     public bool hasDoubleJump;
     //Bool Determining if you can Double Jump.
 
+    int maxHealth;
+    public int healthLevel = 1;
+    int maxStam;
+    public int stamLevel = 1;
+    int strength;
+    public int strLevel = 1;
+    //Stats and associated levels
+
+    void Start()
+    {
+        RefreshStats();
+    }
+
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -85,4 +98,12 @@ public class PlayerManager : MonoBehaviour
 
 
     }
+
+    public void RefreshStats()
+    {
+        maxHealth = 100 + (10 * healthLevel);
+        maxStam = 100 + (10 * stamLevel);
+        strength = 10 + (2 * strLevel);
+    }
+    //"Refreshes" the values of your stats based on their level.
 }
