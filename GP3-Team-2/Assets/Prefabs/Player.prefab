@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 5244928629110226283}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,7 +240,7 @@ Transform:
   - {fileID: 2167346652579039950}
   - {fileID: 1806951164999693318}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &7265167198147555488
 CharacterController:
@@ -283,7 +283,14 @@ MonoBehaviour:
   controller: {fileID: 7265167198147555488}
   cam: {fileID: 0}
   groundCheck: {fileID: 1806951164999693318}
-  speed: 6
+  moveSpeed: 0
+  playerStamina: 0
+  maxStamina: 100
+  staminaDrain: 0
+  net: {fileID: 0}
+  throwPos: {fileID: 0}
+  netVelocity: 0
+  throwUpwardForce: 0
   gravity: -14.715
   jumpHeight: 3
   groundDistance: 0.4
@@ -291,6 +298,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   turnSmoothTime: 0.1
+  hasDoubleJump: 0
+  healthLevel: 1
+  stamLevel: 1
+  strLevel: 1
 --- !u!1 &2180501348721944910
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +528,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5074758250193236959}
-  m_LocalRotation: {x: 0.14253858, y: -0.000000008515345, z: 0.0000000012262865, w: 0.98978925}
+  m_LocalRotation: {x: 0.14253858, y: 0.000000008515345, z: -0.0000000012262865, w: 0.98978925}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -723,7 +734,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5649875940302175383}
-  m_LocalRotation: {x: 0.12451125, y: 0.000000012804362, z: -0.0000000016067907, w: 0.9922182}
+  m_LocalRotation: {x: 0.12451125, y: -0.000000012804364, z: 0.0000000016067909, w: 0.9922182}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
