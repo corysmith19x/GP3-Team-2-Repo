@@ -12,8 +12,8 @@ public class PlayerManager : MonoBehaviour
     //Set up reference to groundcheck transform.
 
     [SerializeField] private float moveSpeed;
-    private float walkTopSpeed = 5;
-    private float sprintTopSpeed = 9;
+    public float walkTopSpeed = 5;
+    public float sprintTopSpeed = 9;
     //Speed of movement.
 
     [Header("Stamina/Sprint Parameters")]
