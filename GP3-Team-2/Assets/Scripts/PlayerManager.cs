@@ -248,13 +248,14 @@ public class PlayerManager : MonoBehaviour
                 Destroy(bullet, bulletTimeToDestroy);
             }
         }
+    }
 
         /*if(Input.GetMouseButtonDown(0))
         {
             Debug.Log("Fired");
             GameObject bullet = GameObject.Instantiate(bulletPrefab, firePos.position, firePos.rotation);
         }*/
-    }
+    
     
     //"Refreshes" the values of your stats based on their level.
 }
