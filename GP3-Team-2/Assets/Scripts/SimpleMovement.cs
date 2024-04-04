@@ -14,13 +14,13 @@ public class SimpleMovement : MonoBehaviour
     /*[SerializeField]*/float playerStamina; 
     float maxStamina = 100f; 
     public float staminaDrain;
-    bool canSprint;
-    bool isMoving;
+    public bool canSprint;
+    public bool isMoving;
     private float timeBeforeRegen  = 3;
     private float staminaIncrement = 2;
     private float staminaTimeIncrement = 0.1f;
     private Coroutine regeneratingStamina;
-    [SerializeField] float jumpForce = 3f;
+    [SerializeField] float jumpForce = 6f;
     float moveSpeed;
     public float walkTopSpeed;
     public float sprintTopSpeed;
@@ -48,11 +48,20 @@ public class SimpleMovement : MonoBehaviour
     public float netVelocity;
     public float throwUpwardForce;
 
+    MovementBaseState currentState;
+
+    public IdleState Idle = new IdleState();
+    public MovementState moveChar = new MovementState();
+
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         controller = GetComponent<CharacterController>();
         playerStamina = maxStamina;
+        SwitchState(Idle);
     }
 
     // Update is called once per frame
@@ -65,6 +74,17 @@ public class SimpleMovement : MonoBehaviour
         Jump();
         Fire();
         ThrowNet();
+
+        anim.SetFloat("hzInput", xInput);
+        anim.SetFloat("vInput", yInput);
+
+        currentState.UpdateState(this);
+    }
+
+    public void SwitchState(MovementBaseState state)
+    {
+        currentState = state;
+        currentState.EnterState(this);
     }
 
     void GetDirectionAndMove()
