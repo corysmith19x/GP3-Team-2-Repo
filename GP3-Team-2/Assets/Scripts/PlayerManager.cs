@@ -161,9 +161,9 @@ public class PlayerManager : MonoBehaviour
             canSprint = true;
 
 
-        if (Input.GetKey(KeyCode.LeftShift) && canSprint)
+        if (Input.GetButton("Sprint") && canSprint)
         {
-            if (Input.GetKey(KeyCode.LeftShift) && isMoving)
+            if (Input.GetButton("Sprint") && isMoving)
             {
                 if (regeneratingStamina != null)
                 {
@@ -187,7 +187,7 @@ public class PlayerManager : MonoBehaviour
         if (playerStamina == 0)
             canSprint = false; 
 
-        if (!Input.GetKey(KeyCode.LeftShift) && playerStamina < maxStamina && regeneratingStamina == null)
+        if (!Input.GetButton("Sprint") && playerStamina < maxStamina && regeneratingStamina == null)
         {
             regeneratingStamina = StartCoroutine(RegenStamina());
         }
@@ -217,7 +217,7 @@ public class PlayerManager : MonoBehaviour
 
     public void ThrowNet()
     {    
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetButtonDown("Sprint"))
         {
             GameObject currentNet = Instantiate(net, throwPos.position, throwPos.rotation);
             Rigidbody rb = currentNet.GetComponent<Rigidbody>();
@@ -230,8 +230,9 @@ public class PlayerManager : MonoBehaviour
 
     public void Fire()
     {   
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetButtonDown("Fire"))
         {
+            Debug.Log("Fired!");
             fireRayCast = mainCam.ScreenPointToRay(crosshair.position);
             RaycastHit hit;
             if(Physics.Raycast(fireRayCast, out hit))
