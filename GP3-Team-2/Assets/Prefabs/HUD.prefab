@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 1289862492736185693}
   - component: {fileID: 6310404937206704627}
   m_Layer: 5
-  m_Name: BarStamina
+  m_Name: BarHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1213,7 +1213,7 @@ GameObject:
   - component: {fileID: 6513009893013702892}
   - component: {fileID: 298143615179064292}
   m_Layer: 5
-  m_Name: OutlineStamina
+  m_Name: OutlineHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

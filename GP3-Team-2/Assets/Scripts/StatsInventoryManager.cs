@@ -49,15 +49,13 @@ public class StatsInventoryManager : MonoBehaviour
         playerMaxStam = 90 + (stamLevel * 10);
         playerStam = playerMaxStam;
         playerDamage = 8 + (damageLevel * 2);
-
-        UpdateUI();
     }
 
-    public void UpdateUI(){
+    public void Update(){
         healthBar.fillAmount = (float)playerHealth / playerMaxHealth;
         staminaBar.fillAmount = (float)playerStam / playerMaxStam;
     }
-
+    
     public void WriteStats()
     {
         StatsHolder.savedHealthLevel = healthLevel;
