@@ -36,7 +36,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 0
-    joyNum: 1
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Vertical
     descriptiveName: 
@@ -68,7 +68,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 1
-    joyNum: 1
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Mouse X
     descriptiveName: 
@@ -100,7 +100,7 @@ InputManager:
     invert: 0
     type: 2
     axis: 3
-    joyNum: 1
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Mouse Y
     descriptiveName: 
@@ -132,7 +132,7 @@ InputManager:
     invert: 1
     type: 2
     axis: 4
-    joyNum: 1
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Jump
     descriptiveName: 
@@ -164,7 +164,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 1
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Submit
     descriptiveName: 
@@ -180,7 +180,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 1
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Submit
     descriptiveName: 
@@ -228,7 +228,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 1
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Pause
     descriptiveName: 
@@ -260,7 +260,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 1
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Fire
     descriptiveName: 
@@ -292,7 +292,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 1
+    joyNum: 0
   - serializedVersion: 3
     m_Name: Aim
     descriptiveName: 
@@ -322,8 +322,8 @@ InputManager:
     sensitivity: 1000
     snap: 0
     invert: 0
-    type: 2
-    axis: 8
+    type: 0
+    axis: 0
     joyNum: 0
   - serializedVersion: 3
     m_Name: Sprint
