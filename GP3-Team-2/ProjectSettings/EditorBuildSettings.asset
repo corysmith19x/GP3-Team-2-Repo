@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Victory.unity
     guid: 2895052fe1b365749bcf7f03359dd1d9
+  - enabled: 1
+    path: Assets/Scenes/StatsHolderTest.unity
+    guid: a12af0027b593b64aaf1ebd18a38e44a
   - enabled: 0
     path: Assets/Scenes/Controls.unity
     guid: 2de5b0581cc05424a9cab4bab47597c2

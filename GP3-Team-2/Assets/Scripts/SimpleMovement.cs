@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SimpleMovement : MonoBehaviour
 {
+    public StatsInventoryManager stats;
+
     public Vector3 dir;
     float xInput, yInput;
     CharacterController controller;
@@ -11,8 +13,6 @@ public class SimpleMovement : MonoBehaviour
     Vector3 velocity;
 
     [Header("Movement Parameters")]
-    /*[SerializeField]*/float playerStamina; 
-    float maxStamina = 100f; 
     public float staminaDrain;
     public bool canSprint;
     public bool isMoving;
@@ -48,6 +48,8 @@ public class SimpleMovement : MonoBehaviour
     public float netVelocity;
     public float throwUpwardForce;
 
+    [Header("Stat Parameters")]
+
     MovementBaseState currentState;
 
     public IdleState Idle = new IdleState();
@@ -55,12 +57,16 @@ public class SimpleMovement : MonoBehaviour
 
     public Animator anim;
 
+    void Awake()
+    {
+        stats = GetComponent<StatsInventoryManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
         controller = GetComponent<CharacterController>();
-        playerStamina = maxStamina;
         SwitchState(Idle);
     }
 
@@ -167,7 +173,7 @@ public class SimpleMovement : MonoBehaviour
         }
 
 
-        if(playerStamina > 0)
+        if(stats.playerStam > 0)
             canSprint = true;
 
 
@@ -184,20 +190,20 @@ public class SimpleMovement : MonoBehaviour
                 moveSpeed = sprintTopSpeed;
 
 
-                playerStamina -= staminaDrain * Time.deltaTime; 
+                stats.playerStam -= staminaDrain * Time.deltaTime; 
 
             }
 
-            if (playerStamina < 0)
-                playerStamina = 0;
+            if (stats.playerStam < 0)
+                stats.playerStam = 0;
         }
         else { moveSpeed = walkTopSpeed; }
 
 
-        if (playerStamina == 0)
+        if (stats.playerStam == 0)
             canSprint = false; 
 
-        if (!Input.GetButton("Sprint") && playerStamina < maxStamina && regeneratingStamina == null)
+        if (!Input.GetButton("Sprint") && stats.playerStam < stats.playerMaxStam && regeneratingStamina == null)
         {
             regeneratingStamina = StartCoroutine(RegenStamina());
         }
@@ -209,15 +215,15 @@ public class SimpleMovement : MonoBehaviour
         WaitForSeconds timeToWait = new WaitForSeconds(staminaTimeIncrement);
 
 
-        while(playerStamina < maxStamina)
+        while(stats.playerStam < stats.playerMaxStam)
         {
-            if (playerStamina > 0)
+            if (stats.playerStam > 0)
                 canSprint = true;
 
-            playerStamina += staminaIncrement;
+            stats.playerStam += staminaIncrement;
 
-            if (playerStamina > maxStamina)
-                playerStamina = maxStamina;
+            if (stats.playerStam > stats.playerMaxStam)
+                stats.playerStam = stats.playerMaxStam;
 
             yield return timeToWait;
         }
