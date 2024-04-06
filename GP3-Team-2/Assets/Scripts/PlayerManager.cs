@@ -10,10 +10,11 @@ public class PlayerManager : MonoBehaviour
     //Set up reference to camera transform.
     public Transform groundCheck;
     //Set up reference to groundcheck transform.
+    public Camera mainCam;
 
     [SerializeField] private float moveSpeed;
-    private float walkTopSpeed = 5;
-    private float sprintTopSpeed = 9;
+    public float walkTopSpeed = 5;
+    public float sprintTopSpeed = 9;
     //Speed of movement.
 
     [Header("Stamina/Sprint Parameters")]
@@ -33,6 +34,16 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] Transform throwPos; 
     public float netVelocity;
     public float throwUpwardForce;
+
+    [Header("Fire Parameters")]
+    [SerializeField] GameObject bulletPrefab; 
+    [SerializeField] Transform firePos; 
+    Ray fireRayCast; 
+    private Rigidbody bulletRigidbody;
+    public float bulletSpeed = 100f;
+    private float bulletTimeToDestroy = 3f;
+    [SerializeField] Transform crosshair;
+
 
     public float gravity = -9.81f;
     Vector3 velocity;
@@ -65,6 +76,7 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         playerStamina = maxStamina;
         RefreshStats();
     }
@@ -86,6 +98,8 @@ public class PlayerManager : MonoBehaviour
         //Gets input from horizontal/vertical axes.
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
         //Saves movement direction from input, normalizes to account for diagonals.
+
+        transform.rotation = Quaternion.Euler(0f, cam.eulerAngles.y, 0f);
 
         if (direction.magnitude >= 0.1f)
         {
@@ -120,6 +134,7 @@ public class PlayerManager : MonoBehaviour
 
         Sprint();
         ThrowNet();
+        Fire();
     }
 
     public void RefreshStats()
@@ -146,9 +161,9 @@ public class PlayerManager : MonoBehaviour
             canSprint = true;
 
 
-        if (Input.GetKey(KeyCode.LeftShift) && canSprint)
+        if (Input.GetButton("Sprint") && canSprint)
         {
-            if (Input.GetKey(KeyCode.LeftShift) && isMoving)
+            if (Input.GetButton("Sprint") && isMoving)
             {
                 if (regeneratingStamina != null)
                 {
@@ -172,7 +187,7 @@ public class PlayerManager : MonoBehaviour
         if (playerStamina == 0)
             canSprint = false; 
 
-        if (!Input.GetKey(KeyCode.LeftShift) && playerStamina < maxStamina && regeneratingStamina == null)
+        if (!Input.GetButton("Sprint") && playerStamina < maxStamina && regeneratingStamina == null)
         {
             regeneratingStamina = StartCoroutine(RegenStamina());
         }
@@ -202,7 +217,7 @@ public class PlayerManager : MonoBehaviour
 
     public void ThrowNet()
     {    
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetButtonDown("Sprint"))
         {
             GameObject currentNet = Instantiate(net, throwPos.position, throwPos.rotation);
             Rigidbody rb = currentNet.GetComponent<Rigidbody>();
@@ -212,6 +227,36 @@ public class PlayerManager : MonoBehaviour
             rb.AddForce(forceToAdd, ForceMode.Impulse);
         } 
     }
+
+    public void Fire()
+    {   
+        if(Input.GetButtonDown("Fire"))
+        {
+            Debug.Log("Fired!");
+            fireRayCast = mainCam.ScreenPointToRay(crosshair.position);
+            RaycastHit hit;
+            if(Physics.Raycast(fireRayCast, out hit))
+            {
+                GameObject bullet = GameObject.Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
+                Vector3 shootDirection = hit.point - firePos.position;
+
+                bulletRigidbody = bullet.GetComponent<Rigidbody>();
+
+                if(bulletRigidbody != null)
+                {
+                    bulletRigidbody.velocity = shootDirection.normalized * bulletSpeed; 
+                } 
+                Destroy(bullet, bulletTimeToDestroy);
+            }
+        }
+    }
+
+        /*if(Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("Fired");
+            GameObject bullet = GameObject.Instantiate(bulletPrefab, firePos.position, firePos.rotation);
+        }*/
+    
     
     //"Refreshes" the values of your stats based on their level.
 }
