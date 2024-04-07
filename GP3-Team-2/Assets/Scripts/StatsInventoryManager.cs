@@ -8,8 +8,8 @@ public class StatsInventoryManager : MonoBehaviour
     StatsHolder savedStats;
 
     [Header("Stat Variables")]
-    public int playerHealth;
-    public int playerMaxHealth;
+    public float playerHealth;
+    public float playerMaxHealth;
     public float playerStam;
     public float playerMaxStam;
     public int playerDamage;
@@ -61,6 +61,12 @@ public class StatsInventoryManager : MonoBehaviour
         StatsHolder.savedHealthLevel = healthLevel;
         StatsHolder.savedStamLevel = stamLevel;
         StatsHolder.savedDamageLevel = damageLevel;
+    }
+
+    public void UpdateHealth(float mod)
+    {
+        // Updating health
+        playerHealth += mod;
     }
 
     /*public void IncreaseStats()
