@@ -31608,6 +31608,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5574458828258464063, guid: eb7954a642146b04087050dafa6bb05d, type: 3}
+      propertyPath: net
+      value: 
+      objectReference: {fileID: 629011380235376, guid: 16cb4fba2e04b584391b48f4f80f88b9, type: 3}
+    - target: {fileID: 5574458828258464063, guid: eb7954a642146b04087050dafa6bb05d, type: 3}
       propertyPath: crosshair
       value: 
       objectReference: {fileID: 1558570723}
