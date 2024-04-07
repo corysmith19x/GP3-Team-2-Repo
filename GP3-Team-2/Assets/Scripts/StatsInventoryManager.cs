@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StatsInventoryManager : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class StatsInventoryManager : MonoBehaviour
     public int healthLevel;
     public int stamLevel;
     public int damageLevel;
+
+    [Header("UI Elements")]
+    public Image healthBar;
+    public Image staminaBar;
 
     public void Start()
     {
@@ -46,6 +51,11 @@ public class StatsInventoryManager : MonoBehaviour
         playerDamage = 8 + (damageLevel * 2);
     }
 
+    public void Update(){
+        healthBar.fillAmount = (float)playerHealth / playerMaxHealth;
+        staminaBar.fillAmount = (float)playerStam / playerMaxStam;
+    }
+    
     public void WriteStats()
     {
         StatsHolder.savedHealthLevel = healthLevel;

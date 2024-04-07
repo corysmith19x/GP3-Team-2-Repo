@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     // This function will make it so if you press the play button, you will be moved to the next scene (game) 
     public void PlayButton()
     {
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("HubWorld");
     }
 
     public void Controls()
@@ -24,6 +24,11 @@ public class MainMenu : MonoBehaviour
     public void CreditScene()
     {
         SceneManager.LoadScene("Credits");
+    }
+
+    public void Level1()
+    {
+        SceneManager.LoadScene("Level 1");
     }
 
     // This function will make it so if you press the quit button, the application will close
