@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
-  expandTime: 2
+  expandTime: 4
   maxSize: 50
   isMaxSize: 0
   rotateSpeed: 200
