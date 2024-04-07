@@ -11,9 +11,10 @@ public class IdleState : MovementBaseState
 
     public override void UpdateState(SimpleMovement movement)
     {
-        if(movement.dir.magnitude > 0.1f)
+        if (movement.dir.magnitude > 0.1f)
         {
             movement.SwitchState(movement.moveChar);
         }
+        else movement.SwitchState(movement.Idle);
     }
 }
