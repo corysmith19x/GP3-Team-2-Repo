@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Net
+  - Enemy
+  - Bullet
+  - Mothman
   layers:
   - Default
   - TransparentFX
