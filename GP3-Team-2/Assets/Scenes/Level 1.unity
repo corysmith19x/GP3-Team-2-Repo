@@ -29131,10 +29131,6 @@ PrefabInstance:
       propertyPath: aimStateManager
       value: 
       objectReference: {fileID: 1155421355}
-    - target: {fileID: 4567730084847177761, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5922880337060990083, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
       propertyPath: m_Name
       value: HUD
