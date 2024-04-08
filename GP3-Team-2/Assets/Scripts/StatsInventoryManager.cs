@@ -54,6 +54,9 @@ public class StatsInventoryManager : MonoBehaviour
     public void Update(){
         healthBar.fillAmount = (float)playerHealth / playerMaxHealth;
         staminaBar.fillAmount = (float)playerStam / playerMaxStam;
+
+        Debug.Log("Player health is" + playerHealth);
+        CheckHealth();
     }
     
     public void WriteStats()
@@ -67,6 +70,15 @@ public class StatsInventoryManager : MonoBehaviour
     {
         // Updating health
         playerHealth += mod;
+    }
+
+    public void CheckHealth()
+    {
+        var player = GameObject.FindWithTag("Player");
+        if (playerHealth <= 0)
+        {
+            Destroy(player);
+        }
     }
 
     /*public void IncreaseStats()
