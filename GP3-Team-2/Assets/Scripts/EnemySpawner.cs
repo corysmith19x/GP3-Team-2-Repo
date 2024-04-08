@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
     [SerializeField] private float enemySpawnTimer = 7f;
+    [SerializeField] private int howManyEnemies;
 
     void Start()
     {
@@ -15,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
     // Will spawn 10 enemy prefabs every 7 seconds
     private IEnumerator SpawnEnemy()
     {
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < howManyEnemies; i++)
         {
             WaitForSeconds wait = new WaitForSeconds(enemySpawnTimer);
 
@@ -23,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
         
             Instantiate(enemyPrefab, transform.position, Quaternion.identity);
 
-            if (i == 9)
+            if (i == (howManyEnemies - 1))
             {
                 Destroy(gameObject);
             }

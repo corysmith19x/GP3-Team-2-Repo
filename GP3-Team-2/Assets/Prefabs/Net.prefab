@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   expandTime: 4
-  maxSize: 50
+  maxSize: 150
   isMaxSize: 0
   rotateSpeed: 200
   rotationDirection: {x: 0, y: 0, z: 1}

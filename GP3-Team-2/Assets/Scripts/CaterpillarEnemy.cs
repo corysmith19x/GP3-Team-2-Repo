@@ -107,6 +107,7 @@ public class CaterpillarEnemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Bullet")
         {
+            Debug.Log("Caterpillar hit");
             enemyHealth -= 50f;
         }
     }
