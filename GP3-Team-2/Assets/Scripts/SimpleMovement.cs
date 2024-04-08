@@ -101,6 +101,15 @@ public class SimpleMovement : MonoBehaviour
         dir = transform.forward * yInput + transform.right * xInput;
 
         controller.Move(Vector3.ClampMagnitude(dir, 1.0f) * moveSpeed * Time.deltaTime);
+
+        if (dir.magnitude > 0.1f)
+        {
+            anim.SetBool("isMoving", true);
+        }
+        else
+        {
+            anim.SetBool("isMoving", false);
+        }
     }
 
     void Gravity()
