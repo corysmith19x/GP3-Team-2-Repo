@@ -79,9 +79,6 @@ public class PlayerManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         playerStamina = maxStamina;
-        if(healthLevel == 0){
-            SceneManager.LoadScene("Game Over");
-        }
         RefreshStats();
     }
 

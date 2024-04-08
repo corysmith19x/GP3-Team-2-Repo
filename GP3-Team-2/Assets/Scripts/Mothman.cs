@@ -118,6 +118,8 @@ public class Mothman : MonoBehaviour
                 Destroy(gameObject);
             }
 
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene("Victory");
         }
     }
