@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Mothman : MonoBehaviour
 {
@@ -116,6 +117,8 @@ public class Mothman : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+
+            SceneManager.LoadScene("Victory");
         }
     }
 }

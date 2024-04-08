@@ -33,10 +33,14 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             if (GameIsPaused){ //checks to see if game is paused or not
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
                 Resume();
             }else{
                 Pause();
                 controlsPanel.SetActive(false);
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
             }
         }
 

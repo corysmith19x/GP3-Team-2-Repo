@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -78,6 +79,9 @@ public class PlayerManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         playerStamina = maxStamina;
+        if(healthLevel == 0){
+            SceneManager.LoadScene("Game Over");
+        }
         RefreshStats();
     }
 
