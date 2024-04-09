@@ -5,6 +5,7 @@ using UnityEngine;
 public class SimpleMovement : MonoBehaviour
 {
     public StatsInventoryManager stats;
+    public new AudioCallerScript audio;
 
     public Vector3 dir;
     float xInput, yInput;
@@ -142,6 +143,7 @@ public class SimpleMovement : MonoBehaviour
             RaycastHit hit;
             if(Physics.Raycast(fireRayCast, out hit))
             {
+                audio.PlaySoundOneShot(0);
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
                 Vector3 shootDirection = hit.point - firePos.position;
 
