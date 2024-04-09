@@ -107,10 +107,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.02330419
-  m_Height: 0.14347428
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.001967628, z: 0.022794245}
+  m_Radius: 0.03
+  m_Height: 0.15517598
+  m_Direction: 2
+  m_Center: {x: 0, y: -0.06000002, z: -0.009077844}
 --- !u!114 &-8912252827545389678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   player: {fileID: 0}
   enemyHealth: 0
   maxEnemyHealth: 200
-  attackRange: 10
+  attackRange: 20
   timeBetweenAttacks: 3
   projectile: {fileID: 7952703561180059682, guid: df0bfa594bdb5394d94e16c5f939207f, type: 3}
 --- !u!195 &4215265536320479103

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StatsInventoryManager : MonoBehaviour
 {
@@ -77,7 +78,9 @@ public class StatsInventoryManager : MonoBehaviour
         var player = GameObject.FindWithTag("Player");
         if (playerHealth <= 0)
         {
-            Destroy(player);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            SceneManager.LoadScene("Game Over");
         }
     }
 
