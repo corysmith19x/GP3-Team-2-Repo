@@ -24,6 +24,7 @@ public class MothmanHitbox : MonoBehaviour
         {
             Debug.Log("Hit");
             other.gameObject.GetComponent<StatsInventoryManager>().UpdateHealth(damage);
+            LevelStatTracker.instance.DamageTaken(damage);
         }
     }
 }

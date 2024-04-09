@@ -22,6 +22,7 @@ public class CaterpillarProjectile : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<StatsInventoryManager>().UpdateHealth(damage);
+            LevelStatTracker.instance.DamageTaken(damage);
             Destroy(gameObject);
         }
     }
