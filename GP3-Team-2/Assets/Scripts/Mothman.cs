@@ -80,14 +80,9 @@ public class Mothman : MonoBehaviour
         {
             health = maxHealth;
         }
-        else if(health < 0)
+        else if(health <= 0)
         {
             health = 0;
-        }
-
-        if (health == 0)
-        {
-            Destroy(gameObject);
         }
     }
 
@@ -116,11 +111,8 @@ public class Mothman : MonoBehaviour
             if(other.gameObject.tag == "Net")
             {
                 Destroy(gameObject);
+                LevelStatTracker.instance.Boss();
             }
-
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            SceneManager.LoadScene("Victory");
         }
     }
 }

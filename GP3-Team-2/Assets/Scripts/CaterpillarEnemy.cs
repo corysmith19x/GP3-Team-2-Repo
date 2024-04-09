@@ -60,6 +60,7 @@ public class CaterpillarEnemy : MonoBehaviour
         if (enemyHealth == 0)
         {
             Destroy(gameObject);
+            LevelStatTracker.instance.Grunts();
         }
     }
 
