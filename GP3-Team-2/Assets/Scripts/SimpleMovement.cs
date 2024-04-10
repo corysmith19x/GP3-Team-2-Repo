@@ -130,6 +130,7 @@ public class SimpleMovement : MonoBehaviour
     {
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
+            audio.PlaySoundOneShot(1);
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
         }
 

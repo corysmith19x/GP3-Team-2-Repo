@@ -533,6 +533,7 @@ MonoBehaviour:
   audioSource: {fileID: 2452474558351222113}
   clips:
   - {fileID: 8300000, guid: d01ecfe87ca39be49a059ebae45a54b9, type: 3}
+  - {fileID: 8300000, guid: 9df919cf8cba7f34b854864474ab3eb8, type: 3}
   soundID: 0
 --- !u!82 &2452474558351222113
 AudioSource:
