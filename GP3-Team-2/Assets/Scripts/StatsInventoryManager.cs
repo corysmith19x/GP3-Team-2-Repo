@@ -17,8 +17,11 @@ public class StatsInventoryManager : MonoBehaviour
 
     [Header("Stat Level Variables")]
     public int healthLevel;
+    public int healthExp;
     public int stamLevel;
+    public int stamExp;
     public int damageLevel;
+    public int damageExp;
 
     [Header("UI Elements")]
     public Image healthBar;
@@ -41,22 +44,23 @@ public class StatsInventoryManager : MonoBehaviour
         stamLevel = StatsHolder.savedStamLevel;
         damageLevel = StatsHolder.savedDamageLevel;
         RefreshStats();
+        playerHealth = playerMaxHealth;
+        playerStam = playerMaxStam;
     }
 
     public void RefreshStats()
     {
         playerMaxHealth = 90 + (healthLevel * 10);
-        playerHealth = playerMaxHealth;
         playerMaxStam = 90 + (stamLevel * 10);
-        playerStam = playerMaxStam;
         playerDamage = 8 + (damageLevel * 2);
     }
 
-    public void Update(){
+    public void Update()
+    {
         healthBar.fillAmount = (float)playerHealth / playerMaxHealth;
         staminaBar.fillAmount = (float)playerStam / playerMaxStam;
 
-        Debug.Log("Player health is" + playerHealth);
+        Debug.Log("Player health is " + playerHealth);
         CheckHealth();
     }
     
@@ -81,6 +85,38 @@ public class StatsInventoryManager : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene("Game Over");
+        }
+    }
+
+    public void CheckHealthExp()
+    {
+        if (healthExp >= 10)
+        {
+            healthLevel += 1;
+            healthExp = 0;
+            RefreshStats();
+            playerHealth = playerMaxHealth;
+        }
+    }
+
+    public void CheckStamExp()
+    {
+        if (stamExp >= 10)
+        {
+            stamLevel += 1;
+            stamExp = 0;
+            RefreshStats();
+            playerStam = playerMaxStam;
+        }
+    }
+
+    public void CheckDamageExp()
+    {
+        if (damageExp >= 10)
+        {
+            damageLevel += 1;
+            damageExp = 0;
+            RefreshStats();
         }
     }
 
