@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CaterpillarEnemy : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class CaterpillarEnemy : MonoBehaviour
     bool alreadyAttacked = false;
     public float timeBetweenAttacks;
     public GameObject projectile;
+
+    [Header("Healthbar")]
+    public Image health;
 
     private void Awake()
     {
@@ -34,6 +38,8 @@ public class CaterpillarEnemy : MonoBehaviour
     {
         ChasePlayer(); 
         CheckHealth();
+
+        health.fillAmount = (float)enemyHealth / maxEnemyHealth;
 
         if(AttackRangeCheck())
         {
