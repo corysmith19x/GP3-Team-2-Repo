@@ -34920,6 +34920,42 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 472.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1125607868631631920, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 151
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125607868631631920, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 133
+      objectReference: {fileID: 0}
+    - target: {fileID: 1190694736886207845, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1190694736886207845, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2483ab5cd5cfc5644b2035b30abdb3ca, type: 3}
+    - target: {fileID: 1190694736886207845, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1190694736886207845, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1190694736886207845, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709880881041362549, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1822.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709880881041362549, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 925
+      objectReference: {fileID: 0}
     - target: {fileID: 1822416156011309434, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 0.8784314
@@ -35052,6 +35088,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6959168067252737149, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 893fdac6e0c6b9a459388c3a6a322af2, type: 3}
     - target: {fileID: 7068556836821569938, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
       propertyPath: m_Type
       value: 0
@@ -35135,6 +35175,7 @@ PrefabInstance:
     - {fileID: 661187564778612256, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
     - {fileID: 504083782489647140, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
     - {fileID: 2449453462863449359, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+    - {fileID: 5782593476249251326, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3050940099070672890, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
       insertIndex: 0
