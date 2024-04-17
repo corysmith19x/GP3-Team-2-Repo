@@ -3070,6 +3070,7 @@ MonoBehaviour:
   gruntsKilled: 0
   bossCaptured: 0
   victoryPanel: {fileID: 1222307436}
+  closeBtn: {fileID: 1568259618}
   levelNameText: {fileID: 1969044463}
   completionTimeText: {fileID: 1785401668}
   gruntsKilledText: {fileID: 2068914810}
@@ -21213,6 +21214,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  hasDoubleJump: 0
   bulletPrefab: {fileID: 4913621021511343734, guid: 2f9d5e1da1714ca4b9d4c00b1b410e32, type: 3}
   firePos: {fileID: 1661719961}
   bulletSpeed: 300
@@ -29709,12 +29711,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnUp: {fileID: 1568259620}
+    m_SelectOnDown: {fileID: 1568259620}
+    m_SelectOnLeft: {fileID: 1568259620}
+    m_SelectOnRight: {fileID: 1568259620}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -35596,6 +35598,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2297216974188846583, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+      propertyPath: controls
+      value: 
+      objectReference: {fileID: 1914607339}
+    - target: {fileID: 2297216974188846583, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
       propertyPath: aimStateManager
       value: 
       objectReference: {fileID: 1155421355}
@@ -35658,6 +35664,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+--- !u!1 &1914607339 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4677173543700797774, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+  m_PrefabInstance: {fileID: 1914607338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1918773485
 PrefabInstance:
   m_ObjectHideFlags: 0
