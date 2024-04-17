@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Mothman : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class Mothman : MonoBehaviour
     public float attackRange = 1f;
     //bool alreadyAttacked = false;
     //public float timeBetweenAttacks;
+
+    [Header("Healthbar")]
+    public Image healthBar;
 
     private void Awake()
     {
@@ -53,6 +57,8 @@ public class Mothman : MonoBehaviour
         }
         CheckCapturable();
         CheckHealth();
+
+        healthBar.fillAmount = (float)health / maxHealth;
     }
 
     private void ChasePlayer()
