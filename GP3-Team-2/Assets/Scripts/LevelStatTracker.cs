@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 using TMPro;
-using UnityEngine.EventSystems;
 
 public class LevelStatTracker : MonoBehaviour
 {
@@ -15,7 +14,6 @@ public class LevelStatTracker : MonoBehaviour
     private float damageTaken;
 
     public GameObject victoryPanel;
-    public GameObject closeBtn;
 
     public static LevelStatTracker instance;
 
@@ -83,7 +81,6 @@ public class LevelStatTracker : MonoBehaviour
             victoryPanel.SetActive(true);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            EventSystem.current.SetSelectedGameObject(closeBtn);
 
             LevelRunData lastRunData = levelRuns[levelRuns.Count - 1];
             levelNameText.text = " " + lastRunData.levelName;

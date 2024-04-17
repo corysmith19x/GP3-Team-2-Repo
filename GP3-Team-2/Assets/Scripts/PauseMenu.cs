@@ -2,21 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
-    private bool controllerPriority = false;
     
     public GameObject pauseMenuUI;
     public GameObject controlsPanel;
     public AimStateManager aimStateManager;
     public SimpleMovement simpleMovementScript;
-
-    public GameObject resume;
-    public GameObject controls;
-    public GameObject closeBtn;
 
     private void Start()
     {
@@ -34,26 +28,15 @@ public class PauseMenu : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
-
-        string[] joystickNames = Input.GetJoystickNames();
-        bool controllerConnected = joystickNames.Length > 0;
-
-        controllerPriority = controllerConnected;
-
         if (Input.GetButtonDown("Pause"))
         {
             if (GameIsPaused){ //checks to see if game is paused or not
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
                 Resume();
-            }else if(!GameIsPaused && controllerPriority){
-                Pause();
-                EventSystem.current.sendNavigationEvents = true;
-                EventSystem.current.SetSelectedGameObject(resume);
-                controlsPanel.SetActive(false);
-            }else{              
+            }else{
                 Pause();
                 controlsPanel.SetActive(false);
                 Cursor.visible = true;
@@ -96,12 +79,10 @@ public class PauseMenu : MonoBehaviour
     public void Controls()
     {
         controlsPanel.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(closeBtn);
     }
 
     public void exitControls()
     {
         controlsPanel.SetActive(false);
-        EventSystem.current.SetSelectedGameObject(controls);
     }
 }
