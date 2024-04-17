@@ -23,6 +23,14 @@ public class StatsInventoryManager : MonoBehaviour
     public int damageLevel;
     public int damageExp;
 
+    [Header("Progression Variables")]
+    public bool hasFireweed;
+    public bool hasMothmanCapture;
+    public bool hasMushrooms;
+    public bool hasSirenCapture;
+    public bool hasCactus;
+    public bool hasFresnoCapture;
+
     [Header("UI Elements")]
     public Image healthBar;
     public Image staminaBar;
@@ -43,6 +51,20 @@ public class StatsInventoryManager : MonoBehaviour
         healthLevel = StatsHolder.savedHealthLevel;
         stamLevel = StatsHolder.savedStamLevel;
         damageLevel = StatsHolder.savedDamageLevel;
+        // Character Levels
+        healthExp = StatsHolder.savedHealthExp;
+        stamExp = StatsHolder.savedStamExp;
+        damageExp = StatsHolder.savedDamageExp;
+        // Exp
+        hasFireweed = StatsHolder.savedFireweed;
+        hasMothmanCapture = StatsHolder.savedMothman;
+        // Level 1
+        hasMushrooms = StatsHolder.savedMushrooms;
+        hasSirenCapture = StatsHolder.savedSiren;
+        // Level 2
+        hasCactus = StatsHolder.savedCactus;
+        hasFresnoCapture = StatsHolder.savedFresno;
+        // Level 3
         RefreshStats();
         playerHealth = playerMaxHealth;
         playerStam = playerMaxStam;
@@ -69,6 +91,20 @@ public class StatsInventoryManager : MonoBehaviour
         StatsHolder.savedHealthLevel = healthLevel;
         StatsHolder.savedStamLevel = stamLevel;
         StatsHolder.savedDamageLevel = damageLevel;
+        // Character Levels
+        StatsHolder.savedHealthExp = healthExp;
+        StatsHolder.savedStamExp = stamExp;
+        StatsHolder.savedDamageExp = damageExp;
+        // Exp
+        StatsHolder.savedFireweed = hasFireweed;
+        StatsHolder.savedMothman = hasMothmanCapture;
+        // Level 1
+        StatsHolder.savedMushrooms = hasMushrooms;
+        StatsHolder.savedSiren = hasSirenCapture;
+        // Level 2
+        StatsHolder.savedCactus = hasCactus;
+        StatsHolder.savedFresno = hasFresnoCapture;
+        // Level 3
     }
 
     public void UpdateHealth(float mod)
