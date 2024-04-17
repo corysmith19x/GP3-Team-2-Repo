@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Pause"))
+        if (Input.GetButtonDown("Pause"))
         {
             if (GameIsPaused){ //checks to see if game is paused or not
                 Cursor.visible = false;

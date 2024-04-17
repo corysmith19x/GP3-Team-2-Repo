@@ -32,6 +32,8 @@ public class SimpleMovement : MonoBehaviour
     public Transform groundCheck;
     [SerializeField] LayerMask groundMask;
     Vector3 spherePos;
+    int doubleJump = 1;
+    public bool hasDoubleJump;
 
     [Header("Fire Parameters")]
     [SerializeField] GameObject bulletPrefab; 
@@ -130,7 +132,18 @@ public class SimpleMovement : MonoBehaviour
     {
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
+            audio.PlaySoundOneShot(1);
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+        }
+        if (hasDoubleJump && Input.GetButtonDown("Jump") && !isGrounded && doubleJump > 0)
+        {
+            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+            doubleJump -= 1;
+        }
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+            doubleJump = 1;
         }
 
     }
