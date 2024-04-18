@@ -38381,6 +38381,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 517319918}
     - target: {fileID: 5574458828258464063, guid: eb7954a642146b04087050dafa6bb05d, type: 3}
+      propertyPath: hasDoubleJump
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574458828258464063, guid: eb7954a642146b04087050dafa6bb05d, type: 3}
       propertyPath: throwUpwardForce
       value: 7
       objectReference: {fileID: 0}
