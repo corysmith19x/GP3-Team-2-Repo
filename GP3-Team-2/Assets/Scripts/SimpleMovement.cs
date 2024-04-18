@@ -126,6 +126,14 @@ public class SimpleMovement : MonoBehaviour
     void CheckGrounded()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        if(isGrounded)
+        {
+            anim.SetBool("isFalling", false);
+        }
+        else
+        {
+            anim.SetBool("isFalling", true);
+        }
     }
 
     void Jump()
@@ -134,6 +142,7 @@ public class SimpleMovement : MonoBehaviour
         {
             audio.PlaySoundOneShot(1);
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+            anim.SetTrigger("isJumping");
         }
         if (hasDoubleJump && Input.GetButtonDown("Jump") && !isGrounded && doubleJump > 0)
         {
