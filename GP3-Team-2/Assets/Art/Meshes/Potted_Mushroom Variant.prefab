@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 73e776d1783cfd2439637b49a115c5f9, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 73e776d1783cfd2439637b49a115c5f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -53,9 +53,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 73e776d1783cfd2439637b49a115c5f9, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 73e776d1783cfd2439637b49a115c5f9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 67a17f957e94cce40aa99aa437405f85, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 73e776d1783cfd2439637b49a115c5f9, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 32312b095845973438a135713d00ddc6, type: 2}
     - target: {fileID: 919132149155446097, guid: 73e776d1783cfd2439637b49a115c5f9, type: 3}
       propertyPath: m_Name
       value: Potted_Mushroom Variant

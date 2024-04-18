@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 219803901317047721, guid: 8478a513019999e4cbbfa09a29567a9c, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 219803901317047721, guid: 8478a513019999e4cbbfa09a29567a9c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -54,12 +54,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 596505773913095955, guid: 8478a513019999e4cbbfa09a29567a9c, type: 3}
       propertyPath: m_Name
-      value: plant food Variant
+      value: mush_food
+      objectReference: {fileID: 0}
+    - target: {fileID: 1389301830791503558, guid: 8478a513019999e4cbbfa09a29567a9c, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1389301830791503558, guid: 8478a513019999e4cbbfa09a29567a9c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 302479abcd81a234590e9521d8ef3a05, type: 2}
+    - target: {fileID: 1389301830791503558, guid: 8478a513019999e4cbbfa09a29567a9c, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c90ba302daa8d5a40adbca506bdf930c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

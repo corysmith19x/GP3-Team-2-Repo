@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3f8ae1f34eb1a6a40bca488f86f8dc89, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3f8ae1f34eb1a6a40bca488f86f8dc89, type: 3}
       propertyPath: m_LocalPosition.x
@@ -53,12 +53,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 3f8ae1f34eb1a6a40bca488f86f8dc89, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3f8ae1f34eb1a6a40bca488f86f8dc89, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: b44ca7b66a76e4a4b95437e947a7ee5b, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 3f8ae1f34eb1a6a40bca488f86f8dc89, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: c90ba302daa8d5a40adbca506bdf930c, type: 2}
     - target: {fileID: 919132149155446097, guid: 3f8ae1f34eb1a6a40bca488f86f8dc89, type: 3}
       propertyPath: m_Name
-      value: jelly Variant
+      value: Orange_jelly
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
