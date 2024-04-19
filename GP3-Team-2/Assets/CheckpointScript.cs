@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RespawnScript : MonoBehaviour
+public class CheckpointScript : MonoBehaviour
 {
-    public GameObject player;
-    public GameObject respawnPoint;
+    private RespawnScript respawn;
+
+    private void Awake()
+    {
+        respawn = GameObject.FindGameObjectWithTag("Respawn").GetComponent<RespawnScript>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +25,9 @@ public class RespawnScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if(other.gameObject.CompareTag("Player"))
         {
-            
-            player.transform.position = respawnPoint.transform.position;
-            Debug.Log("player triggered");
+            respawn.respawnPoint = this.gameObject;
         }
     }
 }

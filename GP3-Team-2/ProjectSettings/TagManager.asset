@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Bullet
   - Mothman
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
