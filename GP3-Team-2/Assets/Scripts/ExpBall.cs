@@ -34,7 +34,8 @@ public class ExpBall : MonoBehaviour
                 Debug.Log("Damage EXP Boosted");
             }
 
-            Destroy(transform.parent.gameObject);
+            //Destroy(transform.parent.gameObject);
+            Destroy(gameObject);
         }
     }
 }
