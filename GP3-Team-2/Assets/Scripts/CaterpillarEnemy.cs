@@ -21,6 +21,8 @@ public class CaterpillarEnemy : MonoBehaviour
     [Header("Healthbar")]
     public Image health;
 
+    public GameObject[] itemDrops;
+
     private void Awake()
     {
         player = GameObject.Find("player_character_BL_rigged").transform;
@@ -65,6 +67,7 @@ public class CaterpillarEnemy : MonoBehaviour
 
         if (enemyHealth == 0)
         {
+            ItemDrop();
             Destroy(gameObject);
             LevelStatTracker.instance.Grunts();
         }
@@ -95,6 +98,15 @@ public class CaterpillarEnemy : MonoBehaviour
     {
         alreadyAttacked = false;
         Debug.Log("Enemy Attack CD");
+    }
+
+    private void ItemDrop()
+    {
+        for (int i = 0; i < itemDrops.Length; i++)
+        {
+            Instantiate(itemDrops[i], transform.position, Quaternion.identity);
+
+        }
     }
 
     bool AttackRangeCheck()
