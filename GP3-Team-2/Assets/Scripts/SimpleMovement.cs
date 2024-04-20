@@ -5,6 +5,7 @@ using UnityEngine;
 public class SimpleMovement : MonoBehaviour
 {
     public StatsInventoryManager stats;
+    public new AudioCallerScript audio;
 
     public Vector3 dir;
     float xInput, yInput;
@@ -31,6 +32,8 @@ public class SimpleMovement : MonoBehaviour
     public Transform groundCheck;
     [SerializeField] LayerMask groundMask;
     Vector3 spherePos;
+    int doubleJump = 1;
+    public bool hasDoubleJump;
 
     [Header("Fire Parameters")]
     [SerializeField] GameObject bulletPrefab; 
@@ -123,13 +126,33 @@ public class SimpleMovement : MonoBehaviour
     void CheckGrounded()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        if(isGrounded)
+        {
+            anim.SetBool("isFalling", false);
+        }
+        else
+        {
+            anim.SetBool("isFalling", true);
+        }
     }
 
     void Jump()
     {
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
+            audio.PlaySoundOneShot(1);
             velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+            anim.SetTrigger("isJumping");
+        }
+        if (hasDoubleJump && Input.GetButtonDown("Jump") && !isGrounded && doubleJump > 0)
+        {
+            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+            doubleJump -= 1;
+        }
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+            doubleJump = 1;
         }
 
     }
@@ -142,6 +165,7 @@ public class SimpleMovement : MonoBehaviour
             RaycastHit hit;
             if(Physics.Raycast(fireRayCast, out hit))
             {
+                audio.PlaySoundOneShot(0);
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
                 Vector3 shootDirection = hit.point - firePos.position;
 

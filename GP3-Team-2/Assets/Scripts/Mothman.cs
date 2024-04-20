@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Mothman : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class Mothman : MonoBehaviour
     public float attackRange = 1f;
     //bool alreadyAttacked = false;
     //public float timeBetweenAttacks;
+
+    [Header("Healthbar")]
+    public Image healthBar;
 
     private void Awake()
     {
@@ -53,6 +57,8 @@ public class Mothman : MonoBehaviour
         }
         CheckCapturable();
         CheckHealth();
+
+        healthBar.fillAmount = (float)health / maxHealth;
     }
 
     private void ChasePlayer()
@@ -80,14 +86,9 @@ public class Mothman : MonoBehaviour
         {
             health = maxHealth;
         }
-        else if(health < 0)
+        else if(health <= 0)
         {
             health = 0;
-        }
-
-        if (health == 0)
-        {
-            Destroy(gameObject);
         }
     }
 
@@ -116,11 +117,8 @@ public class Mothman : MonoBehaviour
             if(other.gameObject.tag == "Net")
             {
                 Destroy(gameObject);
+                LevelStatTracker.instance.Boss();
             }
-
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            SceneManager.LoadScene("Victory");
         }
     }
 }
