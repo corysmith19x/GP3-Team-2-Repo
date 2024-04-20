@@ -323,6 +323,8 @@ MonoBehaviour:
   timeBetweenAttacks: 3
   projectile: {fileID: 7952703561180059682, guid: df0bfa594bdb5394d94e16c5f939207f, type: 3}
   health: {fileID: 6814461105622131553}
+  itemDrops:
+  - {fileID: 5136877482764932626, guid: 4aa2dc75c723a734185fbf600348b317, type: 3}
 --- !u!195 &4215265536320479103
 NavMeshAgent:
   m_ObjectHideFlags: 0
