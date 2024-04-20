@@ -14,10 +14,6 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(PlayAndLoad("NicTest3"));
     }
 
-    public void Controls()
-    {
-        StartCoroutine(PlayAndLoad("Controls"));
-    }
 
     public void GoBackToMain()
     {
