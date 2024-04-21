@@ -1,43 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System;
 using TMPro;
 using UnityEngine.EventSystems;
 
 public class LevelStatTracker : MonoBehaviour
 {
-    public int gruntsKilled = 0;
-    public int bossCaptured = 0;
-    private float levelStartTime;
-    private float levelCompletionTime;
+    public int gruntsKilled { get; private set; }
+    public int bossCaptured { get; private set; }
     private float damageTaken;
 
     public GameObject victoryPanel;
     public GameObject closeBtn;
-
-    public static LevelStatTracker instance;
-
-    //log
-    private List<LevelRunData> levelRuns = new List<LevelRunData>();
 
     public TextMeshProUGUI levelNameText;
     public TextMeshProUGUI completionTimeText;
     public TextMeshProUGUI gruntsKilledText;
     public TextMeshProUGUI damageTakenText;
 
+    public static LevelStatTracker instance;
+
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        instance = this;
     }
 
     private void Start()
@@ -52,7 +36,7 @@ public class LevelStatTracker : MonoBehaviour
 
     public void StartLevel()
     {
-        levelStartTime = Time.time;
+        ResetStats();
     }
 
     public void Grunts()
@@ -64,15 +48,11 @@ public class LevelStatTracker : MonoBehaviour
     public void Boss()
     {
         bossCaptured++;
-        levelCompletionTime = Time.time - levelStartTime;
-        string levelName = SceneManager.GetActiveScene().name;
-        LogRun(levelName);
         CheckVictory();
     }
 
     public void DamageTaken(float amount)
     {
-        amount = -1 * amount;
         damageTaken += amount;
     }
 
@@ -80,53 +60,47 @@ public class LevelStatTracker : MonoBehaviour
     {
         if (bossCaptured == 1)
         {
-            victoryPanel.SetActive(true);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            EventSystem.current.SetSelectedGameObject(closeBtn);
+            if (victoryPanel != null)
+            {
+                victoryPanel.SetActive(true);
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                EventSystem.current.SetSelectedGameObject(closeBtn);
+            }
+            else
+            {
+                Debug.LogError("Victory panel is not assigned!");
+                return;
+            }
 
-            LevelRunData lastRunData = levelRuns[levelRuns.Count - 1];
-            levelNameText.text = " " + lastRunData.levelName;
-            completionTimeText.text = "Completion Time: " + lastRunData.completionTime.ToString("F2") + " seconds";
-            gruntsKilledText.text = "Enemies Killed: " + lastRunData.gruntsKilled.ToString();
-            damageTakenText.text = "Damage Taken: " + lastRunData.damageTaken.ToString("F0");
+            if (levelNameText != null)
+            {
+                levelNameText.text = "Level: " + SceneManager.GetActiveScene().name;
+            }
+            else
+            {
+                Debug.LogError("Level name text is not assigned!");
+                return;
+            }
+
+            if (completionTimeText != null && gruntsKilledText != null && damageTakenText != null)
+            {
+                completionTimeText.text = "Completion Time: " + (Time.timeSinceLevelLoad).ToString("F2") + " seconds";
+                gruntsKilledText.text = "Enemies Killed: " + gruntsKilled;
+                damageTakenText.text = "Damage Taken: " + damageTaken.ToString("F0");
+            }
+            else
+            {
+                Debug.LogError("One or more text components are not assigned!");
+                return;
+            }
         }
     }
 
     private void ResetStats()
     {
-        levelStartTime = 0f;
-        levelCompletionTime = 0f;
-        damageTaken = 0f;
         gruntsKilled = 0;
         bossCaptured = 0;
-    }
-
-    private void LogRun(string levelName)
-    {
-        LevelRunData runData = new LevelRunData(levelName, levelCompletionTime, gruntsKilled, damageTaken);
-        levelRuns.Add(runData);
-    }
-
-    public List<LevelRunData> GetLevelRuns()
-    {
-        return levelRuns;
-    }
-
-    [Serializable]
-    public class LevelRunData
-    {
-        public string levelName;
-        public float completionTime;
-        public int gruntsKilled;
-        public float damageTaken;
-
-        public LevelRunData(string levelName, float completionTime, int gruntsKilled, float damageTaken)
-        {
-            this.levelName = levelName;
-            this.completionTime = completionTime;
-            this.gruntsKilled = gruntsKilled;
-            this.damageTaken = damageTaken;
-        }
+        damageTaken = 0f;
     }
 }
