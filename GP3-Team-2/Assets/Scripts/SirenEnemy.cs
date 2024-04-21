@@ -17,6 +17,8 @@ public class SirenEnemy : MonoBehaviour
     bool alreadyAttacked = false;
     public float timeBetweenAttacks = 0.5f;
     public GameObject projectile;
+    public float forceMultiplier;
+    public float upwardForceMultiplier;
 
 
     private void Awake()
@@ -70,8 +72,8 @@ public class SirenEnemy : MonoBehaviour
             Debug.Log("Enemy Attack being called");
             // Attack code
             Rigidbody rb = Instantiate(projectile, firePos.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 20f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            rb.AddForce(transform.forward * forceMultiplier, ForceMode.Impulse);
+            rb.AddForce(transform.up * upwardForceMultiplier, ForceMode.Impulse);
 
             
             Debug.Log("Enemy Attacked");
