@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
     // This function will make it so if you press the play button, you will be moved to the next scene (game) 
     public void PlayButton()
     {
-        StartCoroutine(PlayAndLoad("NicTest3"));
+        StartCoroutine(PlayAndLoad("HubWorld"));
     }
 
 
