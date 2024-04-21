@@ -44,7 +44,7 @@ public class PauseMenu : MonoBehaviour
 
         if (Input.GetButtonDown("Pause"))
         {
-            if (GameIsPaused){ //checks to see if game is paused or not
+            if (GameIsPaused){
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
                 Resume();
@@ -59,18 +59,24 @@ public class PauseMenu : MonoBehaviour
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
             }
+
         }
 
-        if(GameIsPaused == true)
+        if(GameIsPaused && controllerPriority)
         {
-            
+        
+            if (Input.GetAxisRaw("Mouse X") != 0 || Input.GetAxisRaw("Mouse Y") != 0)
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
         }
     }
 
     public void Resume(){
-        pauseMenuUI.SetActive(false); //turns off canvas
-        Time.timeScale = 1f; //continues in-game time
-        GameIsPaused = false; //lets script know game is not paused
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
         if (aimStateManager != null){
             aimStateManager.enabled = true;
         }
@@ -81,9 +87,9 @@ public class PauseMenu : MonoBehaviour
     }
 
     void Pause(){
-        pauseMenuUI.SetActive(true); //turns on canvas
-        Time.timeScale = 0f; //stops time
-        GameIsPaused = true; //lets script know that game is paused
+        pauseMenuUI.SetActive(true); 
+        Time.timeScale = 0f;
+        GameIsPaused = true;
         if (aimStateManager != null){
             aimStateManager.enabled = false;
         }
