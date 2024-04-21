@@ -6842,6 +6842,8 @@ MonoBehaviour:
   attackRange: 50
   timeBetweenAttacks: 0.5
   projectile: {fileID: 7952703561180059682, guid: df0bfa594bdb5394d94e16c5f939207f, type: 3}
+  forceMultiplier: 25
+  upwardForceMultiplier: 0
 --- !u!4 &238056623 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c621d06dcdc294749842f0e4e855ec8a, type: 3}
