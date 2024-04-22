@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FresnoMob : MonoBehaviour
 {
@@ -9,8 +10,8 @@ public class FresnoMob : MonoBehaviour
     GameObject mainCharacter;
 
     [Header("Health Parameters")]
-    public float health;
-    public float maxHealth = 100f;
+    public float enemyHealth;
+    public float maxEnemyHealth = 100f;
 
     Animator animator;
 
@@ -20,6 +21,9 @@ public class FresnoMob : MonoBehaviour
     //bool alreadyAttacked = false;
     public float timeBetweenAttacks = 2f;
     bool alreadyAttacked = false;
+
+    [Header("Healthbar")]
+    public Image health;
 
     private void Awake()
     {
@@ -31,12 +35,14 @@ public class FresnoMob : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
+        enemyHealth = maxEnemyHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+        health.fillAmount = (float)enemyHealth / maxEnemyHealth;
+
         ChasePlayer();
         CheckHealth();
     }
@@ -48,16 +54,18 @@ public class FresnoMob : MonoBehaviour
 
     private void CheckHealth()
     {
-        if(health > maxHealth)
+        
+
+        if (enemyHealth > maxEnemyHealth)
         {
-            health = maxHealth;
+            enemyHealth = maxEnemyHealth;
         }
-        else if(health < 0)
+        else if(enemyHealth < 0)
         {
-            health = 0;
+            enemyHealth = 0;
         }
 
-        if (health == 0)
+        if (enemyHealth == 0)
         {
             Destroy(gameObject);
         }
@@ -66,13 +74,12 @@ public class FresnoMob : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {   
-        Debug.Log("Enemy att");
         if (other.gameObject.tag == "Bullet")
         {
-            health -= 50f;
+            enemyHealth -= 50f;
         }
 
-        if (!alreadyAttacked && other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && !alreadyAttacked)
         {
             other.gameObject.GetComponent<StatsInventoryManager>().UpdateHealth(damage);
 
