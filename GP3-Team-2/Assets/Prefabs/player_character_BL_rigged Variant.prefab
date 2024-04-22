@@ -387,15 +387,16 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  hasDoubleJump: 0
   bulletPrefab: {fileID: 4913621021511343734, guid: 2f9d5e1da1714ca4b9d4c00b1b410e32, type: 3}
   firePos: {fileID: 8641983995307064061}
   bulletSpeed: 300
   crosshair: {fileID: 0}
   playerCam: {fileID: 0}
-  net: {fileID: 2452576139330517809, guid: 8815fe189aab9ff4294294a977917a46, type: 3}
+  net: {fileID: 629011380235376, guid: 16cb4fba2e04b584391b48f4f80f88b9, type: 3}
   throwPos: {fileID: 8641983995307064061}
   netVelocity: 20
-  throwUpwardForce: 15
+  throwUpwardForce: 7
   anim: {fileID: 0}
 --- !u!114 &7010085767354750439
 MonoBehaviour:
@@ -465,8 +466,11 @@ MonoBehaviour:
   playerMaxStam: 0
   playerDamage: 0
   healthLevel: 0
+  healthExp: 0
   stamLevel: 0
+  stamExp: 0
   damageLevel: 0
+  damageExp: 0
   healthBar: {fileID: 0}
   staminaBar: {fileID: 0}
 --- !u!136 &6666227868128221149

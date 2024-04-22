@@ -8,10 +8,12 @@ public class SirenEnemy : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent agent;
     public Transform player;
     public Transform firePos;
+    Animator anim;
 
     [Header("Health Parameters")]
     public float enemyHealth;
     public float maxEnemyHealth = 1000f;
+    bool isCapturable = false;
 
     [Header("Attack Parameters")]
     public float attackRange = 30f;
@@ -28,6 +30,7 @@ public class SirenEnemy : MonoBehaviour
     {
         player = GameObject.Find("player_character_BL_rigged Variant").transform;
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        anim = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
@@ -42,10 +45,14 @@ public class SirenEnemy : MonoBehaviour
         health.fillAmount = (float)enemyHealth / maxEnemyHealth;
 
         CheckHealth();
-        if (AttackRangeCheck())
+        if(!isCapturable)
         {
-            Attack();
+            if (AttackRangeCheck())
+            {
+                Attack();
+            }
         }
+        CheckCapturable();
     }
 
     private void CheckHealth()
@@ -58,18 +65,13 @@ public class SirenEnemy : MonoBehaviour
         {
             enemyHealth = 0;
         }
-
-        if (enemyHealth == 0)
-        {
-            //ItemDrop();
-            Destroy(gameObject);
-        }
     }
 
     private void Attack()
     {
         if (!alreadyAttacked)
         {
+            anim.SetTrigger("Attack");
             // Make the enemy sit still
             agent.SetDestination(transform.position);
 
@@ -93,6 +95,16 @@ public class SirenEnemy : MonoBehaviour
         Debug.Log("Enemy Attack CD");
     }
 
+    private void CheckCapturable()
+    {
+        if (enemyHealth <= 100)
+        {
+            anim.SetBool("isStunned", true);
+            Debug.Log("Is capturable");
+            isCapturable = true;
+        }
+    }
+
     bool AttackRangeCheck()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
@@ -105,11 +117,20 @@ public class SirenEnemy : MonoBehaviour
             return false;
         }
     }
-    void OnCollisionEnter(Collision other)
-    {
+    
+    private void OnCollisionEnter(Collision other)
+    {   
         if (other.gameObject.tag == "Bullet")
         {
             enemyHealth -= 50f;
+        }
+        
+        if (isCapturable)
+        {
+            if(other.gameObject.tag == "Net")
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
