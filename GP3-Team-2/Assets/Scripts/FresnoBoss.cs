@@ -83,11 +83,6 @@ public class FresnoBoss : MonoBehaviour
         {
             health = 0;
         }
-
-        if (health == 0)
-        {
-            Destroy(gameObject);
-        }
     }
 
     bool AttackRangeCheck()
