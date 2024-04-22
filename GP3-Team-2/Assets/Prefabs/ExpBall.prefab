@@ -66,9 +66,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14cc46af97ebc4f4aa3aae8946515cd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHealth: 0
-  isStam: 0
-  isDamage: 0
 --- !u!1 &6669638287611574913
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,7 +80,7 @@ GameObject:
   - component: {fileID: 198745306951271589}
   - component: {fileID: 3176943515552516132}
   m_Layer: 0
-  m_Name: ExpBallBase
+  m_Name: ExpBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +100,7 @@ Transform:
   m_Children:
   - {fileID: 1358848233366713050}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9152442590121129435
 MeshFilter:
@@ -133,7 +130,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 9951432def97553489c032daba79b7c8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

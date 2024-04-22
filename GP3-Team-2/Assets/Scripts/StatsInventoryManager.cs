@@ -16,12 +16,8 @@ public class StatsInventoryManager : MonoBehaviour
     public int playerDamage;
 
     [Header("Stat Level Variables")]
-    public int healthLevel;
-    public int healthExp;
-    public int stamLevel;
-    public int stamExp;
-    public int damageLevel;
-    public int damageExp;
+    public int characterLevel;
+    public int characterExp;
 
     [Header("Progression Variables")]
     public bool hasFireweed;
@@ -48,14 +44,9 @@ public class StatsInventoryManager : MonoBehaviour
 
     public void StartStats()
     {
-        healthLevel = StatsHolder.savedHealthLevel;
-        stamLevel = StatsHolder.savedStamLevel;
-        damageLevel = StatsHolder.savedDamageLevel;
-        // Character Levels
-        healthExp = StatsHolder.savedHealthExp;
-        stamExp = StatsHolder.savedStamExp;
-        damageExp = StatsHolder.savedDamageExp;
-        // Exp
+        characterLevel = StatsHolder.savedCharacterLevel;
+        characterExp = StatsHolder.savedCharacterExp;
+        // Character Progression
         hasFireweed = StatsHolder.savedFireweed;
         hasMothmanCapture = StatsHolder.savedMothman;
         // Level 1
@@ -72,9 +63,9 @@ public class StatsInventoryManager : MonoBehaviour
 
     public void RefreshStats()
     {
-        playerMaxHealth = 90 + (healthLevel * 10);
-        playerMaxStam = 90 + (stamLevel * 10);
-        playerDamage = 8 + (damageLevel * 2);
+        playerMaxHealth = 90 + (characterLevel * 10);
+        playerMaxStam = 90 + (characterLevel * 10);
+        playerDamage = 8 + (characterLevel * 2);
     }
 
     public void Update()
@@ -88,14 +79,9 @@ public class StatsInventoryManager : MonoBehaviour
     
     public void WriteStats()
     {
-        StatsHolder.savedHealthLevel = healthLevel;
-        StatsHolder.savedStamLevel = stamLevel;
-        StatsHolder.savedDamageLevel = damageLevel;
-        // Character Levels
-        StatsHolder.savedHealthExp = healthExp;
-        StatsHolder.savedStamExp = stamExp;
-        StatsHolder.savedDamageExp = damageExp;
-        // Exp
+        StatsHolder.savedCharacterLevel = characterLevel;
+        StatsHolder.savedCharacterExp = characterExp;
+        // Character Progression
         StatsHolder.savedFireweed = hasFireweed;
         StatsHolder.savedMothman = hasMothmanCapture;
         // Level 1
@@ -124,18 +110,21 @@ public class StatsInventoryManager : MonoBehaviour
         }
     }
 
-    public void CheckHealthExp()
+    public void CheckExp()
     {
-        if (healthExp >= 10)
+        if (characterExp >= 10)
         {
-            healthLevel += 1;
-            healthExp = 0;
+            characterLevel += 1;
+            characterExp = 0;
             RefreshStats();
             playerHealth = playerMaxHealth;
+            playerStam = playerMaxStam;
         }
     }
 
-    public void CheckStamExp()
+    // Dummied Out Stat Levels
+
+    /*public void CheckStamExp()
     {
         if (stamExp >= 10)
         {
@@ -144,9 +133,9 @@ public class StatsInventoryManager : MonoBehaviour
             RefreshStats();
             playerStam = playerMaxStam;
         }
-    }
+    }*/
 
-    public void CheckDamageExp()
+    /*public void CheckDamageExp()
     {
         if (damageExp >= 10)
         {
@@ -154,7 +143,7 @@ public class StatsInventoryManager : MonoBehaviour
             damageExp = 0;
             RefreshStats();
         }
-    }
+    }*/
 
     /*public void IncreaseStats()
     {
