@@ -2,15 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
+    private bool controllerPriority = false;
     
     public GameObject pauseMenuUI;
     public GameObject controlsPanel;
     public AimStateManager aimStateManager;
     public SimpleMovement simpleMovementScript;
+
+    public GameObject resume;
+    public GameObject controls;
+    public GameObject closeBtn;
 
     private void Start()
     {
@@ -28,32 +34,49 @@ public class PauseMenu : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
+
+        string[] joystickNames = Input.GetJoystickNames();
+        bool controllerConnected = joystickNames.Length > 0;
+
+        controllerPriority = controllerConnected;
+
         if (Input.GetButtonDown("Pause"))
         {
-            if (GameIsPaused){ //checks to see if game is paused or not
+            if (GameIsPaused){
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
                 Resume();
-            }else{
+            }else if(!GameIsPaused && controllerPriority){
+                Pause();
+                EventSystem.current.sendNavigationEvents = true;
+                EventSystem.current.SetSelectedGameObject(resume);
+                controlsPanel.SetActive(false);
+            }else{              
                 Pause();
                 controlsPanel.SetActive(false);
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
             }
+
         }
 
-        if(GameIsPaused == true)
+        if(GameIsPaused && controllerPriority)
         {
-            
+        
+            if (Input.GetAxisRaw("Mouse X") != 0 || Input.GetAxisRaw("Mouse Y") != 0)
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
         }
     }
 
     public void Resume(){
-        pauseMenuUI.SetActive(false); //turns off canvas
-        Time.timeScale = 1f; //continues in-game time
-        GameIsPaused = false; //lets script know game is not paused
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
         if (aimStateManager != null){
             aimStateManager.enabled = true;
         }
@@ -64,9 +87,9 @@ public class PauseMenu : MonoBehaviour
     }
 
     void Pause(){
-        pauseMenuUI.SetActive(true); //turns on canvas
-        Time.timeScale = 0f; //stops time
-        GameIsPaused = true; //lets script know that game is paused
+        pauseMenuUI.SetActive(true); 
+        Time.timeScale = 0f;
+        GameIsPaused = true;
         if (aimStateManager != null){
             aimStateManager.enabled = false;
         }
@@ -79,10 +102,12 @@ public class PauseMenu : MonoBehaviour
     public void Controls()
     {
         controlsPanel.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(closeBtn);
     }
 
     public void exitControls()
     {
         controlsPanel.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(controls);
     }
 }
