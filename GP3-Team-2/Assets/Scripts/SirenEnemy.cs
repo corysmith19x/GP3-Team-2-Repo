@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SirenEnemy : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class SirenEnemy : MonoBehaviour
     public float forceMultiplier;
     public float upwardForceMultiplier;
 
+    [Header("Healthbar")]
+    public Image health;
 
     private void Awake()
     {
@@ -36,8 +39,10 @@ public class SirenEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        health.fillAmount = (float)enemyHealth / maxEnemyHealth;
+
         CheckHealth();
-        if(AttackRangeCheck())
+        if (AttackRangeCheck())
         {
             Attack();
         }
@@ -45,7 +50,7 @@ public class SirenEnemy : MonoBehaviour
 
     private void CheckHealth()
     {
-        if(enemyHealth > maxEnemyHealth)
+        if (enemyHealth > maxEnemyHealth)
         {
             enemyHealth = maxEnemyHealth;
         }
@@ -75,7 +80,7 @@ public class SirenEnemy : MonoBehaviour
             rb.AddForce(transform.forward * forceMultiplier, ForceMode.Impulse);
             rb.AddForce(transform.up * upwardForceMultiplier, ForceMode.Impulse);
 
-            
+
             Debug.Log("Enemy Attacked");
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -91,13 +96,20 @@ public class SirenEnemy : MonoBehaviour
     bool AttackRangeCheck()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-        if(distanceToPlayer <= attackRange)
+        if (distanceToPlayer <= attackRange)
         {
             return true;
         }
         else
         {
             return false;
+        }
+    }
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Bullet")
+        {
+            enemyHealth -= 50f;
         }
     }
 }
