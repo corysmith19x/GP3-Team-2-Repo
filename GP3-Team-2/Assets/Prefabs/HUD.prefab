@@ -2046,7 +2046,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1ed8f3a43afdba7499ac4c1fa7c475e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1d000f29710876c449c21f6e86dea3d8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2102,7 +2102,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 708701490316245985}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: GoBackToMain
+        m_MethodName: PlayButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2665,7 +2665,7 @@ Transform:
   - {fileID: 1553629921297847501}
   - {fileID: 3050940099070672890}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &708701490316245985
 MonoBehaviour:
@@ -2808,8 +2808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193f24e58471adf4bb70eee53ce50800, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gruntsKilled: 0
-  bossCaptured: 0
   victoryPanel: {fileID: 1688447595724700830}
   closeBtn: {fileID: 4485609763838682293}
   levelNameText: {fileID: 1859901259029737261}
