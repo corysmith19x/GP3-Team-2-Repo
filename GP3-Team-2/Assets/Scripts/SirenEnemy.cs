@@ -130,6 +130,7 @@ public class SirenEnemy : MonoBehaviour
             if(other.gameObject.tag == "Net")
             {
                 Destroy(gameObject);
+                LevelStatTracker.instance.Boss();
             }
         }
     }

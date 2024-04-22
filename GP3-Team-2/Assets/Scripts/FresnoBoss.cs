@@ -25,7 +25,7 @@ public class FresnoBoss : MonoBehaviour
     {
         player = GameObject.Find("player_character_BL_rigged Variant").transform;
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Start is called before the first frame update
