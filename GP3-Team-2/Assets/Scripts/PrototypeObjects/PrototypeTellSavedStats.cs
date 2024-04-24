@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PrototypeTellSavedStats : MonoBehaviour
 {
-    int health = StatsHolder.savedHealthLevel;
+    /*int health = StatsHolder.savedHealthLevel;
     int stam = StatsHolder.savedStamLevel;
     int damage = StatsHolder.savedDamageLevel;
 
     void Start()
     {
         Debug.Log("HP = " + health + " stam = " + stam + " dmg = " + damage);
-    }
+    }*/
+    // Dummied out prototype script
 }
