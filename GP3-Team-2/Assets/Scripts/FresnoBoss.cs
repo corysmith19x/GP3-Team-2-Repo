@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FresnoBoss : MonoBehaviour
 {
@@ -9,17 +10,21 @@ public class FresnoBoss : MonoBehaviour
     GameObject mainCharacter;
 
     [Header("Health Parameters")]
-    public float health;
-    public float maxHealth = 500f;
+    public float enemyHealth;
+    public float maxEnemyHealth = 1000f;
     bool isCapturable;
 
     Animator animator;
 
 
     [Header("Attack Parameters")]
+    public float damage = -10f;
     public float attackRange = 1f;
-    //bool alreadyAttacked = false;
-    //public float timeBetweenAttacks;
+    bool alreadyAttacked = false;
+    public float timeBetweenAttacks;
+
+    [Header("Healthbar")]
+    public Image health;
 
     private void Awake()
     {
@@ -31,19 +36,22 @@ public class FresnoBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
+        enemyHealth = maxEnemyHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+        health.fillAmount = (float)enemyHealth / maxEnemyHealth;
+
         if (!isCapturable)
         {
             ChasePlayer();
         }
         else if (isCapturable) 
         {
-            animator.SetTrigger("Stun");
+            animator.SetTrigger("isStunned");
+            animator.SetBool("isMoving", false);
             agent.SetDestination(transform.position);
         }
         if(AttackRangeCheck())
@@ -67,7 +75,7 @@ public class FresnoBoss : MonoBehaviour
 
     private void CheckCapturable()
     {
-        if (health <= 100)
+        if (enemyHealth <= 100)
         {
             isCapturable = true;
         }
@@ -75,13 +83,15 @@ public class FresnoBoss : MonoBehaviour
 
     private void CheckHealth()
     {
-        if(health > maxHealth)
+
+
+        if (enemyHealth > maxEnemyHealth)
         {
-            health = maxHealth;
+            enemyHealth = maxEnemyHealth;
         }
-        else if(health < 0)
+        else if (enemyHealth < 0)
         {
-            health = 0;
+            enemyHealth = 0;
         }
     }
 
@@ -102,15 +112,31 @@ public class FresnoBoss : MonoBehaviour
     {   
         if (other.gameObject.tag == "Bullet")
         {
-            health -= 50f;
+            enemyHealth -= 50f;
         }
-        
+
+        if (other.gameObject.tag == "Player" && !alreadyAttacked)
+        {
+            other.gameObject.GetComponent<StatsInventoryManager>().UpdateHealth(damage);
+
+
+            Debug.Log("Enemy Attacked");
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
+
         if (isCapturable)
         {
             if(other.gameObject.tag == "Net")
             {
                 Destroy(gameObject);
+                LevelStatTracker.instance.Boss();
             }
         }
+    }
+    private void ResetAttack()
+    {
+        alreadyAttacked = false;
+        Debug.Log("Enemy Attack CD");
     }
 }

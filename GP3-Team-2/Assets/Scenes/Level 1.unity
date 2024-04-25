@@ -14352,7 +14352,7 @@ PrefabInstance:
     - target: {fileID: -817573807067505235, guid: 06a57fb4c41e5dd41a89f39a82b9a407, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 437fc54caf2d7674abe20635db45233a, type: 2}
+      objectReference: {fileID: 2100000, guid: 39e77ee5ec65d9d4b8c3409a736434e1, type: 2}
     - target: {fileID: 919132149155446097, guid: 06a57fb4c41e5dd41a89f39a82b9a407, type: 3}
       propertyPath: m_Name
       value: Withered_tree (1)
@@ -19115,7 +19115,7 @@ PrefabInstance:
     - target: {fileID: -817573807067505235, guid: 06a57fb4c41e5dd41a89f39a82b9a407, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 437fc54caf2d7674abe20635db45233a, type: 2}
+      objectReference: {fileID: 2100000, guid: 39e77ee5ec65d9d4b8c3409a736434e1, type: 2}
     - target: {fileID: 919132149155446097, guid: 06a57fb4c41e5dd41a89f39a82b9a407, type: 3}
       propertyPath: m_Name
       value: Withered_tree
@@ -19127,7 +19127,37 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 06a57fb4c41e5dd41a89f39a82b9a407, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1159717203}
+    - targetCorrespondingSourceObject: {fileID: 8536400945726557719, guid: 06a57fb4c41e5dd41a89f39a82b9a407, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 928544286}
   m_SourcePrefab: {fileID: 100100000, guid: 06a57fb4c41e5dd41a89f39a82b9a407, type: 3}
+--- !u!1 &928544285 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8536400945726557719, guid: 06a57fb4c41e5dd41a89f39a82b9a407, type: 3}
+  m_PrefabInstance: {fileID: 928544284}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &928544286
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928544285}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4164511204261677510, guid: 06a57fb4c41e5dd41a89f39a82b9a407, type: 3}
 --- !u!1001 &928694925
 PrefabInstance:
   m_ObjectHideFlags: 0

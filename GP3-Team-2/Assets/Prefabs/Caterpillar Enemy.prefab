@@ -227,7 +227,7 @@ Transform:
   m_Children:
   - {fileID: 3698583556015640334}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2464637572785241118
 MeshFilter:
@@ -324,7 +324,9 @@ MonoBehaviour:
   projectile: {fileID: 7952703561180059682, guid: df0bfa594bdb5394d94e16c5f939207f, type: 3}
   health: {fileID: 6814461105622131553}
   itemDrops:
-  - {fileID: 5136877482764932626, guid: 4aa2dc75c723a734185fbf600348b317, type: 3}
+  - {fileID: 6669638287611574913, guid: 84045f0c01634e3489d78828adf92613, type: 3}
+  - {fileID: 6669638287611574913, guid: 84045f0c01634e3489d78828adf92613, type: 3}
+  - {fileID: 6669638287611574913, guid: 84045f0c01634e3489d78828adf92613, type: 3}
 --- !u!195 &4215265536320479103
 NavMeshAgent:
   m_ObjectHideFlags: 0
