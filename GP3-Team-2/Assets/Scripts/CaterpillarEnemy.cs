@@ -7,6 +7,7 @@ public class CaterpillarEnemy : MonoBehaviour
 {
     public UnityEngine.AI.NavMeshAgent agent;
     public Transform player;
+    public Transform firePos;
 
     [Header("Health Parameters")]
     public float enemyHealth;
@@ -83,7 +84,7 @@ public class CaterpillarEnemy : MonoBehaviour
             transform.LookAt(player);
             Debug.Log("Enemy Attack being called");
             // Attack code
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            Rigidbody rb = Instantiate(projectile, firePos.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 20f, ForceMode.Impulse);
             rb.AddForce(transform.up * 8f, ForceMode.Impulse);
 

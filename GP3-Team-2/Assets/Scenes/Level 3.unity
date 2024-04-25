@@ -62991,13 +62991,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4157c33d81bfac947b117b6de2285647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  agent: {fileID: 2125706295}
   player: {fileID: 0}
   enemyHealth: 0
   maxEnemyHealth: 1000
   damage: -10
   attackRange: 5
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 0
   health: {fileID: 80223507}
 --- !u!4 &2125706299
 Transform:

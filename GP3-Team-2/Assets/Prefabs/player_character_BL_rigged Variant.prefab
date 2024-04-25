@@ -87,7 +87,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6027709696331796038}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5051389, z: 1.5416036}
+  m_LocalPosition: {x: 0, y: 1.5051389, z: 3.53}
   m_LocalScale: {x: 1.0705581, y: 1.0705581, z: 1.0705581}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -465,12 +465,14 @@ MonoBehaviour:
   playerStam: 0
   playerMaxStam: 0
   playerDamage: 0
-  healthLevel: 0
-  healthExp: 0
-  stamLevel: 0
-  stamExp: 0
-  damageLevel: 0
-  damageExp: 0
+  characterLevel: 0
+  characterExp: 0
+  hasFireweed: 0
+  hasMothmanCapture: 0
+  hasMushrooms: 0
+  hasSirenCapture: 0
+  hasCactus: 0
+  hasFresnoCapture: 0
   healthBar: {fileID: 0}
   staminaBar: {fileID: 0}
 --- !u!136 &6666227868128221149
