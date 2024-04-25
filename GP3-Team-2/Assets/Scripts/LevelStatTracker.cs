@@ -17,6 +17,9 @@ public class LevelStatTracker : MonoBehaviour
     public TextMeshProUGUI gruntsKilledText;
     public TextMeshProUGUI damageTakenText;
 
+    public AimStateManager aimStateManager;
+    public SimpleMovement simpleMovementScript;
+
     public static LevelStatTracker instance;
 
     private void Awake()
@@ -27,6 +30,18 @@ public class LevelStatTracker : MonoBehaviour
     private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        GameObject aimStateManagerObject = GameObject.Find("player_character_BL_rigged");
+        if (aimStateManagerObject != null)
+        {
+            aimStateManager = aimStateManagerObject.GetComponent<AimStateManager>();
+        }
+        
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            simpleMovementScript = player.GetComponent<SimpleMovement>();
+        }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -62,6 +77,14 @@ public class LevelStatTracker : MonoBehaviour
         {
             if (victoryPanel != null)
             {
+                Time.timeScale = 0f;
+                if (aimStateManager != null){
+                    aimStateManager.enabled = false;
+                }
+
+                if (simpleMovementScript != null){
+                    simpleMovementScript.enabled = false;
+                }
                 victoryPanel.SetActive(true);
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
@@ -75,7 +98,7 @@ public class LevelStatTracker : MonoBehaviour
 
             if (levelNameText != null)
             {
-                levelNameText.text = "Level: " + SceneManager.GetActiveScene().name;
+                levelNameText.text = "" + SceneManager.GetActiveScene().name;
             }
             else
             {

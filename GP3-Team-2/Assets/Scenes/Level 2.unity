@@ -66225,6 +66225,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1620008627985415147, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+      propertyPath: aimStateManager
+      value: 
+      objectReference: {fileID: 2013941239}
+    - target: {fileID: 1620008627985415147, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+      propertyPath: simpleMovementScript
+      value: 
+      objectReference: {fileID: 2013941240}
     - target: {fileID: 2297216974188846583, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
       propertyPath: aimStateManager
       value: 

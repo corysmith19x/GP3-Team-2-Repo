@@ -34645,6 +34645,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1620008627985415147, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+      propertyPath: aimStateManager
+      value: 
+      objectReference: {fileID: 1155421355}
+    - target: {fileID: 1620008627985415147, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+      propertyPath: simpleMovementScript
+      value: 
+      objectReference: {fileID: 2578832776083213476}
     - target: {fileID: 2297216974188846583, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
       propertyPath: aimStateManager
       value: 
@@ -37199,6 +37207,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &2578832776083213476 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5574458828258464063, guid: eb7954a642146b04087050dafa6bb05d, type: 3}
+  m_PrefabInstance: {fileID: 2578832776083213469}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2578832776083213470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e478d9a16f16442bb4ef95fbdc371e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4195473637834209650
 PrefabInstance:
   m_ObjectHideFlags: 0
