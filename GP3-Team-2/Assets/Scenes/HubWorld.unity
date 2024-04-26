@@ -1128,6 +1128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 662777408}
   sceneName: Level 3
+  loadingScreen: {fileID: 1526114826}
 --- !u!65 &688944582
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6867,6 +6868,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &1526114826 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4812590531671817508, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+  m_PrefabInstance: {fileID: 1430340675}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1536161977 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8301955757614057304, guid: 80ae353fb7ffd454dbffeb7a708274ac, type: 3}
@@ -7182,6 +7188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 662777408}
   sceneName: Level 2
+  loadingScreen: {fileID: 1526114826}
 --- !u!65 &1734502554
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12475,7 +12482,7 @@ PrefabInstance:
     - target: {fileID: 8414900921198734493, guid: a0cebd65d5f211a42bf6e9c014149150, type: 3}
       propertyPath: loadingScreen
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1526114826}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

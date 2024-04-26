@@ -7,6 +7,7 @@ public class PortalScript : MonoBehaviour
 {
     public GameObject player;
     public string sceneName;
+    public GameObject loadingScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +25,15 @@ public class PortalScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            SceneManager.LoadScene(sceneName);
-            Debug.Log("player triggered");
+            StartCoroutine(LoadScene(sceneName));
         }
+    }
+
+    private IEnumerator LoadScene(string sceneName){
+        loadingScreen.SetActive(true);
+        Time.timeScale = 1f;
+        yield return new WaitForSecondsRealtime(1.25f);
+        SceneManager.LoadScene(sceneName);
+        Debug.Log("player triggered");
     }
 }
