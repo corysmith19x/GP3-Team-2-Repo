@@ -110,7 +110,7 @@ public class LevelStatTracker : MonoBehaviour
             {
                 completionTimeText.text = "Completion Time: " + (Time.timeSinceLevelLoad).ToString("F2") + " seconds";
                 gruntsKilledText.text = "Enemies Killed: " + gruntsKilled;
-                damageTakenText.text = "Damage Taken: " + damageTaken.ToString("F0");
+                damageTakenText.text = "Damage Taken: " + Mathf.Abs(damageTaken).ToString("F0");
             }
             else
             {
