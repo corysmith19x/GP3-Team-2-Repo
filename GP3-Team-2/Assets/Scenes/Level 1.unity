@@ -185,9 +185,17 @@ PrefabInstance:
       value: PortalWorking
       objectReference: {fileID: 0}
     - target: {fileID: 8414900921198734493, guid: a0cebd65d5f211a42bf6e9c014149150, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2578832776083213470}
+    - target: {fileID: 8414900921198734493, guid: a0cebd65d5f211a42bf6e9c014149150, type: 3}
       propertyPath: sceneName
       value: HubWorld
       objectReference: {fileID: 0}
+    - target: {fileID: 8414900921198734493, guid: a0cebd65d5f211a42bf6e9c014149150, type: 3}
+      propertyPath: loadingScreen
+      value: 
+      objectReference: {fileID: 1914607339}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34710,6 +34718,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+--- !u!1 &1914607339 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4778967912782876295, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
+  m_PrefabInstance: {fileID: 1914607338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1918773485
 PrefabInstance:
   m_ObjectHideFlags: 0
