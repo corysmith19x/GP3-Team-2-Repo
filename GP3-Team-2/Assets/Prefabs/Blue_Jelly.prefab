@@ -460,7 +460,10 @@ MonoBehaviour:
   timeBetweenAttacks: 4
   projectile: {fileID: 7952703561180059682, guid: df0bfa594bdb5394d94e16c5f939207f, type: 3}
   health: {fileID: 5407054640579690804}
-  itemDrops: []
+  itemDrops:
+  - {fileID: 6669638287611574913, guid: 84045f0c01634e3489d78828adf92613, type: 3}
+  - {fileID: 6669638287611574913, guid: 84045f0c01634e3489d78828adf92613, type: 3}
+  - {fileID: 6669638287611574913, guid: 84045f0c01634e3489d78828adf92613, type: 3}
 --- !u!136 &7529592125562967516
 CapsuleCollider:
   m_ObjectHideFlags: 0

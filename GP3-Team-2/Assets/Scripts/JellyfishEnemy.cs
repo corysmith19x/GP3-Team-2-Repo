@@ -104,8 +104,26 @@ public class JellyfishEnemy : MonoBehaviour
     {
         for (int i = 0; i < itemDrops.Length; i++)
         {
-            Instantiate(itemDrops[i], transform.position, Quaternion.identity);
-
+            int r = Random.Range(0, 4);
+            Vector3 randomForce = Vector3.zero;
+            if (r == 0)
+            {
+                randomForce = Vector3.forward;
+            }
+            else if (r == 1)
+            {
+                randomForce = Vector3.back;
+            }
+            else if (r == 2)
+            {
+                randomForce = Vector3.left;
+            }
+            else if (r == 3)
+            {
+                randomForce = Vector3.right;
+            }
+            var instance = Instantiate(itemDrops[i], transform.position, Quaternion.identity);
+            instance.GetComponent<Rigidbody>().velocity = (randomForce * 3f) + (Vector3.up * 2f);
         }
     }
 

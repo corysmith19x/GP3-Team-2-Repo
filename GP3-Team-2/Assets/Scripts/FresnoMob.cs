@@ -25,6 +25,8 @@ public class FresnoMob : MonoBehaviour
     [Header("Healthbar")]
     public Image health;
 
+    public GameObject[] itemDrops;
+
     private void Awake()
     {
         player = GameObject.Find("player_character_BL_rigged Variant").transform;
@@ -67,10 +69,39 @@ public class FresnoMob : MonoBehaviour
 
         if (enemyHealth == 0)
         {
+            ItemDrop();
             Destroy(gameObject);
+            LevelStatTracker.instance.Grunts();
         }
     }
-    
+
+    private void ItemDrop()
+    {
+        for (int i = 0; i < itemDrops.Length; i++)
+        {
+            int r = Random.Range(0, 4);
+            Vector3 randomForce = Vector3.zero;
+            if (r == 0)
+            {
+                randomForce = Vector3.forward;
+            }
+            else if (r == 1)
+            {
+                randomForce = Vector3.back;
+            }
+            else if (r == 2)
+            {
+                randomForce = Vector3.left;
+            }
+            else if (r == 3)
+            {
+                randomForce = Vector3.right;
+            }
+            var instance = Instantiate(itemDrops[i], transform.position, Quaternion.identity);
+            instance.GetComponent<Rigidbody>().velocity = (randomForce * 3f) + (Vector3.up * 2f);
+        }
+    }
+
 
     void OnCollisionEnter(Collision other)
     {   
