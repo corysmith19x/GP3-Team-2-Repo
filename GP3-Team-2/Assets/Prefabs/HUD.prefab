@@ -679,7 +679,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 708701490316245985}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: PlayButton
+        m_MethodName: HubWorld
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

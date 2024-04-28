@@ -62972,7 +62972,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2048534109908891570, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: PlayButton
+      value: cutsceneFresno
       objectReference: {fileID: 0}
     - target: {fileID: 2048534109908891570, guid: 20a2c1f9d71d8e04aba0207ebcd425fe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

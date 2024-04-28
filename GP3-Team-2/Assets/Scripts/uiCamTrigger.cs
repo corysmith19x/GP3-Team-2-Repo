@@ -10,10 +10,11 @@ public class uiCamTrigger : MonoBehaviour
     public AudioSource audioSource;
     public GameObject loadingScreen;
 
-    private bool uiActive;
+    private bool uiActive = false;
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Collided");
         if (other.CompareTag("MainCamera"))
         {
             uiText.SetActive(true);

@@ -20,6 +20,20 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(PlayAndLoad("HubWorld"));
     }
 
+    public void cutsceneMothman()
+    {
+        StartCoroutine(PlayAndLoad("Cutscene2"));
+    }
+
+    public void cutsceneSiren()
+    {
+        StartCoroutine(PlayAndLoad("Cutscene3"));
+    }
+
+    public void cutsceneFresno()
+    {
+        StartCoroutine(PlayAndLoad("Cutscene4"));
+    }
 
     public void GoBackToMain()
     {
