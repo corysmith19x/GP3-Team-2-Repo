@@ -457,8 +457,9 @@ MonoBehaviour:
   enemyHealth: 0
   maxEnemyHealth: 200
   attackRange: 20
+  chaseRange: 50
   timeBetweenAttacks: 4
-  projectile: {fileID: 7952703561180059682, guid: df0bfa594bdb5394d94e16c5f939207f, type: 3}
+  projectile: {fileID: 7952703561180059682, guid: f6e674a1dc0728d4f99ae1c222044baf, type: 3}
   health: {fileID: 5407054640579690804}
   itemDrops:
   - {fileID: 6669638287611574913, guid: ae9a3e475574ac246a731a365fb91409, type: 3}
