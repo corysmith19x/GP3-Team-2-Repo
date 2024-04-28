@@ -24,7 +24,7 @@ public class uiCamTrigger : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)){
+        if(Input.GetButtonDown("Pause")){
             StartCoroutine(PlayAndLoadScene(loadScene));
         }
 
