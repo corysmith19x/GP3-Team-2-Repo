@@ -18,10 +18,13 @@ public class ExpBall : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         StatsInventoryManager stats = other.GetComponent<StatsInventoryManager>();
+        AudioCallerScript pickup = other.GetComponent<AudioCallerScript>();
+
         if (stats != null)
         {
             stats.characterExp += 1;
             stats.CheckExp();
+            pickup.PlaySoundOneShot(Random.Range(3,6));
             Destroy(transform.parent.gameObject);
         }
     }

@@ -105,7 +105,7 @@ public class CaterpillarEnemy : MonoBehaviour
     {
         for (int i = 0; i < itemDrops.Length; i++)
         {
-            int r = Random.Range(0, 4);
+            int r = Random.Range(1, 6);
             Vector3 randomForce = Vector3.zero;
             if (r == 0)
             {

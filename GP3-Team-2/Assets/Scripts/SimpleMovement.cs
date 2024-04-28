@@ -240,6 +240,11 @@ public class SimpleMovement : MonoBehaviour
         {
             regeneratingStamina = StartCoroutine(RegenStamina());
         }
+        if(Input.GetButtonDown("Sprint") && canSprint)
+        {
+            audio.PlaySoundOneShot(2);
+        }
+
     }
 
     private IEnumerator RegenStamina()
