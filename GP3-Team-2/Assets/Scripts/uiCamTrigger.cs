@@ -39,6 +39,13 @@ public class uiCamTrigger : MonoBehaviour
         PlayButtonSound();
         loadingScreen.SetActive(true);
         yield return new WaitForSecondsRealtime(1.25f);
+
+        if (SceneManager.GetActiveScene().name == "Cutscene4")
+        {
+            // Change the scene to "victory" if in "cutscene4"
+            sceneName = "victory";
+        }
+
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
         while (!asyncLoad.isDone)
         {
