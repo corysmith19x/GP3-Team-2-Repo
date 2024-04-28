@@ -14,6 +14,7 @@ public class JellyfishEnemy : MonoBehaviour
 
     [Header("Attack Parameters")]
     public float attackRange = 10f;
+    public float chaseRange = 50f;
     bool alreadyAttacked = false;
     public float timeBetweenAttacks;
     public GameObject projectile;
@@ -38,7 +39,10 @@ public class JellyfishEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ChasePlayer(); 
+        if(ChaseRangeCheck())
+        {
+            ChasePlayer(); 
+        }
         CheckHealth();
 
         health.fillAmount = (float)enemyHealth / maxEnemyHealth;
@@ -131,6 +135,19 @@ public class JellyfishEnemy : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if(distanceToPlayer <= attackRange)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    bool ChaseRangeCheck()
+    {
+        float distanceToPlayer2 = Vector3.Distance(transform.position, player.position);
+        if(distanceToPlayer2 <= chaseRange)
         {
             return true;
         }

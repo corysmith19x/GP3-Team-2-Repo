@@ -18,6 +18,7 @@ public class FresnoMob : MonoBehaviour
 
     [Header("Attack Parameters")]
     public float damage = -10f;
+    public float chaseRange = 50f;
     //bool alreadyAttacked = false;
     public float timeBetweenAttacks = 2f;
     bool alreadyAttacked = false;
@@ -45,7 +46,10 @@ public class FresnoMob : MonoBehaviour
     {
         health.fillAmount = (float)enemyHealth / maxEnemyHealth;
 
-        ChasePlayer();
+        if(ChaseRangeCheck())
+        {
+            ChasePlayer(); 
+        }
         CheckHealth();
     }
 
@@ -125,5 +129,18 @@ public class FresnoMob : MonoBehaviour
     {
         alreadyAttacked = false;
         Debug.Log("Enemy Attack CD");
+    }
+
+    bool ChaseRangeCheck()
+    {
+        float distanceToPlayer2 = Vector3.Distance(transform.position, player.position);
+        if(distanceToPlayer2 <= chaseRange)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
