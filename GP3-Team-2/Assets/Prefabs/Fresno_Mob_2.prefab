@@ -385,9 +385,9 @@ MonoBehaviour:
   timeBetweenAttacks: 2
   health: {fileID: 5744683492259979666}
   itemDrops:
+  - {fileID: 6669638287611574913, guid: ae9a3e475574ac246a731a365fb91409, type: 3}
   - {fileID: 6669638287611574913, guid: 84045f0c01634e3489d78828adf92613, type: 3}
-  - {fileID: 6669638287611574913, guid: 84045f0c01634e3489d78828adf92613, type: 3}
-  - {fileID: 6669638287611574913, guid: 84045f0c01634e3489d78828adf92613, type: 3}
+  - {fileID: 6669638287611574913, guid: b6d095a4f90f92a45a12211a004aec4c, type: 3}
 --- !u!136 &3683044115603962209
 CapsuleCollider:
   m_ObjectHideFlags: 0

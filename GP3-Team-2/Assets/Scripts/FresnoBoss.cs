@@ -50,7 +50,7 @@ public class FresnoBoss : MonoBehaviour
         }
         else if (isCapturable) 
         {
-            animator.SetTrigger("isStunned");
+            animator.SetBool("isStunned", true);
             animator.SetBool("isMoving", false);
             agent.SetDestination(transform.position);
         }
