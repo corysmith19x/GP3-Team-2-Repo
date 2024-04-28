@@ -1881,7 +1881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiText: {fileID: 978328831}
-  loadScene: HubWorld
+  loadScene: Victory
   buttonSound: {fileID: 8300000, guid: 2695697c71da1834ba40cbc43018c870, type: 3}
   audioSource: {fileID: 1140258585}
   loadingScreen: {fileID: 486945928}
