@@ -7,6 +7,7 @@ public class Dummy : MonoBehaviour
 {
     public GameObject uiShoot;
     public GameObject uiCap;
+    public GameObject dummyParticles;
 
     [Header("Health Parameters")]
     public float health;
@@ -75,9 +76,18 @@ public class Dummy : MonoBehaviour
         {
             if(other.gameObject.tag == "Net")
             {
+                StartCoroutine(particleSFX());
                 health = maxHealth;
-                isCapturable = false;
+                isCapturable = false;   
             }
         }
+    }
+
+    private IEnumerator particleSFX()
+    {
+        dummyParticles.SetActive(true);
+        Time.timeScale = 1f;
+        yield return new WaitForSecondsRealtime(3f);
+        dummyParticles.SetActive(false);
     }
 }
