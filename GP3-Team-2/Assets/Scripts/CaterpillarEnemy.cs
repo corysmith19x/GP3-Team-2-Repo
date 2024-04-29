@@ -52,6 +52,11 @@ public class CaterpillarEnemy : MonoBehaviour
         {
             Attack();
         }
+
+        if(enemyHealth < maxEnemyHealth)
+        {
+            chaseRange = 200f;
+        }
     }
 
     private void ChasePlayer()

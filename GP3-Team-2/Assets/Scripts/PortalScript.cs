@@ -72,7 +72,7 @@ public class PortalScript : MonoBehaviour
     }
 
     private IEnumerator LoadScene(string sceneName){
-        yield return new WaitForSecondsRealtime(4.2f);
+        yield return new WaitForSecondsRealtime(4.3f);
         loadingScreen.SetActive(true);
         Time.timeScale = 1f;
         yield return new WaitForSecondsRealtime(1.25f);

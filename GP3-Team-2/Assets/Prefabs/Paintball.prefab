@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5349774715862094492}
   - component: {fileID: 2348739264142708411}
   - component: {fileID: 2163625552389475287}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4842,7 +4842,7 @@ GameObject:
   - component: {fileID: 5427760658759194488}
   - component: {fileID: 95566502735734591}
   - component: {fileID: 2936731512440889213}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Paintball
   m_TagString: Bullet
   m_Icon: {fileID: 0}

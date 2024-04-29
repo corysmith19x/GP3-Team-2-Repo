@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1358848233366713050}
   - component: {fileID: 6110394829938645892}
   - component: {fileID: 7883056284208516377}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ExpTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 8831276226477178639}
   - component: {fileID: 198745306951271589}
   - component: {fileID: 3176943515552516132}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ExpCS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,6 +212,10 @@ PrefabInstance:
     - target: {fileID: 6187815655306159063, guid: b5db2100c0f9c694b9d2f02b4d64d556, type: 3}
       propertyPath: m_Name
       value: cactus_food Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187815655306159063, guid: b5db2100c0f9c694b9d2f02b4d64d556, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6815170135673780589, guid: b5db2100c0f9c694b9d2f02b4d64d556, type: 3}
       propertyPath: m_RootOrder

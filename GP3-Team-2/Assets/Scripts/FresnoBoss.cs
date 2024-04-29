@@ -11,7 +11,7 @@ public class FresnoBoss : MonoBehaviour
 
     [Header("Health Parameters")]
     public float enemyHealth;
-    public float maxEnemyHealth = 1000f;
+    public float maxEnemyHealth;
     bool isCapturable;
 
     Animator animator;
@@ -25,6 +25,8 @@ public class FresnoBoss : MonoBehaviour
 
     [Header("Healthbar")]
     public Image health;
+
+    public float chaseRange = 50f;
 
     private void Awake()
     {
@@ -44,11 +46,17 @@ public class FresnoBoss : MonoBehaviour
     {
         health.fillAmount = (float)enemyHealth / maxEnemyHealth;
 
-        if (!isCapturable)
+        if (ChaseRangeCheck())
         {
             ChasePlayer();
+            animator.SetBool("isMoving", true);
         }
-        else if (isCapturable) 
+        else
+        {
+            animator.SetBool("isMoving", false);
+        }
+
+        if(isCapturable) 
         {
             animator.SetBool("isStunned", true);
             animator.SetBool("isMoving", false);
@@ -60,6 +68,11 @@ public class FresnoBoss : MonoBehaviour
         }
         CheckCapturable();
         CheckHealth();
+
+        if(enemyHealth <= 2499)
+        {
+            chaseRange = 500f;
+        }
     }
 
     private void ChasePlayer()
@@ -69,8 +82,11 @@ public class FresnoBoss : MonoBehaviour
 
     private void Attack()
     {
-        //Debug.Log("Attack");
-        animator.SetTrigger("Attack");
+        if (!alreadyAttacked)
+        {
+            animator.SetTrigger("Attack");
+            Invoke(nameof(ResetAttack), timeBetweenAttacks * Time.deltaTime);
+        }
     }
 
     private void CheckCapturable()
@@ -138,5 +154,18 @@ public class FresnoBoss : MonoBehaviour
     {
         alreadyAttacked = false;
         Debug.Log("Enemy Attack CD");
+    }
+
+    bool ChaseRangeCheck()
+    {
+        float distanceToPlayer2 = Vector3.Distance(transform.position, player.position);
+        if (distanceToPlayer2 <= chaseRange)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

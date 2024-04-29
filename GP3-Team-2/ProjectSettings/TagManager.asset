@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - Mothman
   - Checkpoint
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -21,9 +22,9 @@ TagManager:
   - Player
   - Checkpoint
   - Spawner
-  - 
-  - 
-  - 
+  - Bullet
+  - PickUp
+  - BossWall
   - 
   - 
   - 

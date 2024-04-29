@@ -6,7 +6,7 @@ public class FresnoHitbox : MonoBehaviour
 {
     private float damage = -25f;
     bool alreadyAttacked = false;
-    private float timeBetweenAttacks = 1f;
+    public float timeBetweenAttacks;
 
 
 
@@ -26,7 +26,7 @@ public class FresnoHitbox : MonoBehaviour
     {
         if (!alreadyAttacked)
         {
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            Invoke(nameof(ResetAttack), timeBetweenAttacks * Time.deltaTime);
             LevelStatTracker.instance.DamageTaken(damage);
         }
     }
@@ -43,9 +43,9 @@ public class FresnoHitbox : MonoBehaviour
         {
             if (!alreadyAttacked)
             {
+                Attack();
                 other.gameObject.GetComponent<StatsInventoryManager>().UpdateHealth(damage);
             }
-            Attack();
             Debug.Log("Hit");
         }
     }

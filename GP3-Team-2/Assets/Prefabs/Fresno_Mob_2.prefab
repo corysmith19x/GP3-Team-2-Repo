@@ -382,6 +382,7 @@ MonoBehaviour:
   enemyHealth: 0
   maxEnemyHealth: 200
   damage: -10
+  chaseRange: 60
   timeBetweenAttacks: 2
   health: {fileID: 5744683492259979666}
   itemDrops:
@@ -448,7 +449,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 7
+  m_Speed: 12
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -476,6 +477,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2906661615691334315, guid: bdfc9acd594a9594583d6b47d11de95e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0528e3d190d11044d920f5f8bb4c9e19, type: 2}
     - target: {fileID: 8110288526158208626, guid: bdfc9acd594a9594583d6b47d11de95e, type: 3}
       propertyPath: m_Name
       value: Fressno_Mob

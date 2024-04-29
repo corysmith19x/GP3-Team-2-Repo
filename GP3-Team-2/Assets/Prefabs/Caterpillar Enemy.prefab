@@ -320,8 +320,9 @@ MonoBehaviour:
   player: {fileID: 0}
   firePos: {fileID: 8864631034306064808}
   enemyHealth: 0
-  maxEnemyHealth: 200
+  maxEnemyHealth: 300
   attackRange: 20
+  chaseRange: 50
   timeBetweenAttacks: 3
   projectile: {fileID: 7952703561180059682, guid: df0bfa594bdb5394d94e16c5f939207f, type: 3}
   health: {fileID: 6814461105622131553}

@@ -60,6 +60,8 @@ public class SimpleMovement : MonoBehaviour
 
     public Animator anim;
 
+    public Material myMaterial;
+
     void Awake()
     {
         stats = GetComponent<StatsInventoryManager>();
@@ -71,6 +73,7 @@ public class SimpleMovement : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         controller = GetComponent<CharacterController>();
         SwitchState(Idle);
+        myMaterial.color = new Color(myMaterial.color.r, myMaterial.color.g, myMaterial.color.b, 0f);
     }
 
     // Update is called once per frame

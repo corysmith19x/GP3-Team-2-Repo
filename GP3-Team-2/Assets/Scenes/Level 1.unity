@@ -197,6 +197,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: f87c9eb79a1c622439ad5c0c55e61a76, type: 2}
     - target: {fileID: 8414900921198734493, guid: a0cebd65d5f211a42bf6e9c014149150, type: 3}
+      propertyPath: lerpDuration
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414900921198734493, guid: a0cebd65d5f211a42bf6e9c014149150, type: 3}
       propertyPath: loadingScreen
       value: 
       objectReference: {fileID: 1914607339}
@@ -20855,6 +20859,7 @@ MonoBehaviour:
   netVelocity: 20
   throwUpwardForce: 15
   anim: {fileID: 0}
+  myMaterial: {fileID: 0}
 --- !u!114 &997937930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20905,6 +20910,7 @@ MonoBehaviour:
       m_LegacyVelocityFilterStrength: 0
   camFollowPos: {fileID: 1415389862}
   mouseSense: 5
+  rightStickSensitivity: 0
 --- !u!4 &1004468763 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 24ef25872f4d55248b8defc8915f01a3, type: 3}
@@ -37336,6 +37342,10 @@ PrefabInstance:
       propertyPath: playerCam
       value: 
       objectReference: {fileID: 517319918}
+    - target: {fileID: 5574458828258464063, guid: eb7954a642146b04087050dafa6bb05d, type: 3}
+      propertyPath: myMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: f87c9eb79a1c622439ad5c0c55e61a76, type: 2}
     - target: {fileID: 5574458828258464063, guid: eb7954a642146b04087050dafa6bb05d, type: 3}
       propertyPath: hasDoubleJump
       value: 1

@@ -51,6 +51,11 @@ public class JellyfishEnemy : MonoBehaviour
         {
             Attack();
         }
+
+        if (enemyHealth < maxEnemyHealth)
+        {
+            chaseRange = 200f;
+        }
     }
 
     private void ChasePlayer()

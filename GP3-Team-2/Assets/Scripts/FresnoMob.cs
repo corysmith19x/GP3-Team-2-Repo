@@ -28,16 +28,20 @@ public class FresnoMob : MonoBehaviour
 
     public GameObject[] itemDrops;
 
+    FresnoBoss boss;
+
     private void Awake()
     {
         player = GameObject.Find("player_character_BL_rigged Variant").transform;
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
+        boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<FresnoBoss>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        
         enemyHealth = maxEnemyHealth;
     }
 
@@ -48,9 +52,24 @@ public class FresnoMob : MonoBehaviour
 
         if(ChaseRangeCheck())
         {
-            ChasePlayer(); 
+            ChasePlayer();
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
         }
         CheckHealth();
+
+        if (enemyHealth < maxEnemyHealth)
+        {
+            chaseRange = 200f;
+        }
+
+        if (boss.enemyHealth <= 2400f)
+        {
+            chaseRange = 500f;
+        }
     }
 
     private void ChasePlayer()
@@ -108,7 +127,7 @@ public class FresnoMob : MonoBehaviour
 
 
     void OnCollisionEnter(Collision other)
-    {   
+    {
         if (other.gameObject.tag == "Bullet")
         {
             enemyHealth -= 50f;
