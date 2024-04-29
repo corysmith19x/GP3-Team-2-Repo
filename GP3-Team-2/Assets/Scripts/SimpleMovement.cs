@@ -62,6 +62,11 @@ public class SimpleMovement : MonoBehaviour
 
     public Material myMaterial;
 
+    [Header("LayerMask")]
+
+    public int layerMask;
+    public int layerNumber;
+
     void Awake()
     {
         stats = GetComponent<StatsInventoryManager>();
@@ -74,6 +79,7 @@ public class SimpleMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         SwitchState(Idle);
         myMaterial.color = new Color(myMaterial.color.r, myMaterial.color.g, myMaterial.color.b, 0f);
+        //layerMask = 1 << layerNumber;
     }
 
     // Update is called once per frame
@@ -164,9 +170,10 @@ public class SimpleMovement : MonoBehaviour
     {   
         if(Input.GetButtonDown("Fire"))
         {
+            //Vector2 screenCenterPoint = new Vector2(Screen.width/2f, Screen.height/2f);
             fireRayCast = playerCam.ScreenPointToRay(crosshair.position);
             RaycastHit hit;
-            if(Physics.Raycast(fireRayCast, out hit))
+            if(Physics.Raycast(fireRayCast, out hit, Mathf.Infinity))
             {
                 audio.PlaySoundOneShot(0);
                 GameObject bullet = GameObject.Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
